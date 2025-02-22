@@ -123,7 +123,7 @@
 
   /* File Upload */
   .upload-btn {
-    @apply flex min-h-14 w-full items-center justify-center gap-1.5 rounded-md;
+    @apply flex min-h-14 w-full items-center justify-center gap-1.5 rounded-md bg-dark-300;
   }
 
   .upload-filename {
@@ -336,5 +336,16 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
