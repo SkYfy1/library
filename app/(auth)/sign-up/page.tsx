@@ -1,6 +1,7 @@
 "use client";
 
 import AuthForm from "@/components/AuthForm";
+import { signUp } from "@/lib/actions/auth";
 import { signUpSchema } from "@/lib/validations";
 import React from "react";
 import { z } from "zod";
@@ -16,7 +17,7 @@ const Page = () => (
       universityId: 0,
       universityCard: "",
     }}
-    onSubmit={(data) => new Promise((res, rej) => res({ success: true }))}
+    onSubmit={signUp}
   />
 );
 

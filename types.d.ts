@@ -1,3 +1,11 @@
+interface User {
+  id: string;
+  fullName: string;
+  email: string;
+  univesityId: string;
+  universityCard: string;
+}
+
 interface Book {
   id: number;
   title: string;
@@ -12,4 +20,12 @@ interface Book {
   videoUrl: string;
   summary: string;
   isLoanedBook?: boolean;
+}
+
+interface AuthCredentials {
+  fullName: string;
+  email: string;
+  password: string;
+  universityId: number;
+  universityCard: string;
 }
