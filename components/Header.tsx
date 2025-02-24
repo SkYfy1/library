@@ -12,9 +12,9 @@ const Header = ({ session }: { session: Session }) => {
   const pathname = usePathname();
   return (
     <header className="my-10 flex justify-between gap-5">
-      <Link href="/" className="flex gap-2 items-center">
+      <Link href="/" className="flex gap-4 items-center">
         <Image src="/icons/logo.svg" width={40} height={40} alt="logo-image" />
-        BookWise
+        <p className="text-white font-ibm-plex-sans font-semibold">BookWise</p>
       </Link>
       <ul className="flex items-center gap-8">
         <li>
