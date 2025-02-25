@@ -8,9 +8,11 @@ import { signIn, signOut } from "@/auth";
 import { headers } from "next/headers";
 import ratelimit from "../ratelimit";
 import { redirect } from "next/navigation";
+import { workflowClient } from "../workflow";
+import { config } from "../config";
 
 export const signOutUser = async () => {
-  signOut({ redirectTo: "/" });
+  await signOut({ redirectTo: "/" });
 };
 
 export const signInWithCredentials = async (
@@ -72,6 +74,13 @@ export const signUp = async (params: AuthCredentials) => {
       universityCard,
       universityId,
       password: hashedPassword,
+    });
+
+    await workflowClient.trigger({
+      url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
+      body: {
+        email,
+      },
     });
 
     await signInWithCredentials({ email, password });
