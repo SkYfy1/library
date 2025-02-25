@@ -62,12 +62,14 @@ export const signUp = async (params: AuthCredentials) => {
     .limit(1);
 
   if (existingUser.length > 0) {
+    console.log(1);
     return { success: false, error: "User already exists" };
   }
 
   const hashedPassword = await hash(password, 10);
 
   try {
+    console.log(2);
     await db.insert(users).values({
       fullName,
       email,
@@ -76,12 +78,12 @@ export const signUp = async (params: AuthCredentials) => {
       password: hashedPassword,
     });
 
-    // await workflowClient.trigger({
-    //   url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
-    //   body: {
-    //     email,
-    //   },
-    // });
+    await workflowClient.trigger({
+      url: `https://${config.env.prodApiEndpoint}/api/workflows/onboarding`,
+      body: {
+        email,
+      },
+    });
 
     await signInWithCredentials({ email, password });
 

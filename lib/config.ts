@@ -14,11 +14,6 @@ export const config = {
       qstashUrl: process.env.QSTASH_URL!,
       qstashToken: process.env.QSTASH_TOKEN!,
     },
-    emailjs: {
-      publicKey: process.env.EMAIL_KEY!,
-      serviceId: process.env.EMAIL_SERVICE!,
-      templateId: process.env.EMAIL_TEMPLATE!,
-      privateKey: process.env.EMAIL_PRIVATE!,
-    },
+    resendToken: process.env.RESEND_TOKEN!,
   },
 };
