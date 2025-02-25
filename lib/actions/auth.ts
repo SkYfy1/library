@@ -76,12 +76,12 @@ export const signUp = async (params: AuthCredentials) => {
       password: hashedPassword,
     });
 
-    await workflowClient.trigger({
-      url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
-      body: {
-        email,
-      },
-    });
+    // await workflowClient.trigger({
+    //   url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
+    //   body: {
+    //     email,
+    //   },
+    // });
 
     await signInWithCredentials({ email, password });
 
