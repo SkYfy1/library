@@ -77,9 +77,12 @@ export const signUp = async (params: AuthCredentials) => {
       universityId,
       password: hashedPassword,
     });
-
+    console.log(
+      `https://${config.env.prodApiEndpoint}/api/workflows/onboarding`,
+      `https://${config.env.apiEndpoint}/api/workflows/onboarding`
+    );
     await workflowClient.trigger({
-      url: `https://${config.env.prodApiEndpoint}/api/workflows/onboarding`,
+      url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
       body: {
         email,
       },
