@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 import BookCoverSvg from "./BookCoverSvg";
+
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 const variantStyles: Record<BookCoverVariant, string> = {
   extraSmall: "book-cover_extra-small",
