@@ -34,3 +34,21 @@ export const users = pgTable("users", {
     withTimezone: true,
   }).defaultNow(),
 });
+
+export const books = pgTable("books", {
+  id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
+  title: varchar("title", { length: 255 }).notNull(),
+  author: varchar("author", { length: 255 }).notNull(),
+  genre: text("genre").notNull(),
+  rating: integer("rating").notNull(),
+  totalCopies: integer("total_copies").notNull().default(1),
+  availableCopies: integer("available_copies").notNull().default(0),
+  description: text("description").notNull(),
+  coverColor: varchar("cover_color", { length: 7 }).notNull(),
+  coverUrl: text("cover_url").notNull(),
+  videoUrl: text("video_url").notNull(),
+  summary: text("summury").notNull(),
+  createdAt: timestamp("created_at", {
+    withTimezone: true,
+  }).defaultNow(),
+});

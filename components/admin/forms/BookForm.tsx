@@ -19,6 +19,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import ColorPicker from "../ColorPicker";
+import { addBook } from "@/lib/admin/actions/book";
+import { toast } from "sonner";
 
 interface Props extends Partial<Book> {
   type?: "create" | "update";
@@ -38,12 +40,31 @@ const BookForm = ({ type, ...book }: Props) => {
       coverUrl: "",
       coverColor: "",
       videoUrl: "",
-      summury: "",
+      summary: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-    console.log(values);
+    const result = await addBook(values);
+
+    if (result.success) {
+      toast("Book uploaded", {
+        description: "Book created successfully",
+        action: {
+          label: "x",
+          onClick: () => console.log("oooo"),
+        },
+      });
+      router.push(`/admin/books/${result.data.id}`);
+    } else {
+      toast("Error", {
+        description: result.message,
+        action: {
+          label: "x",
+          onClick: () => console.log("oooo"),
+        },
+      });
+    }
   };
 
   return (
@@ -239,7 +260,7 @@ const BookForm = ({ type, ...book }: Props) => {
         />
         <FormField
           control={form.control}
-          name={"summury"}
+          name={"summary"}
           render={({ field }) => (
             <FormItem className="flex flex-col gap-4">
               <FormLabel className="text-base font-normal text-dark-500">
@@ -247,7 +268,7 @@ const BookForm = ({ type, ...book }: Props) => {
               </FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Book summury"
+                  placeholder="Book summary"
                   {...field}
                   rows={5}
                   className="book-form_input"
