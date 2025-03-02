@@ -3,6 +3,10 @@ import React from "react";
 import { Button } from "./ui/button";
 import BookCover from "./BookCover";
 
+type Props = {
+  userId: string;
+} & Book;
+
 const BookOverview = ({
   title,
   author,
@@ -13,7 +17,9 @@ const BookOverview = ({
   description,
   coverColor,
   coverUrl,
-}: Book) => {
+  userId,
+}: Props) => {
+  console.log(coverUrl);
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">
@@ -23,7 +29,7 @@ const BookOverview = ({
             By <span className="font-semibold text-light-200">{author}</span>
           </p>
           <p>
-            Category
+            Category{" "}
             <span className="font-semibold text-light-200">{genre}</span>
           </p>
           <div className="flex gap-1">
