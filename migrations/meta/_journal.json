@@ -15,6 +15,13 @@
       "when": 1740786657376,
       "tag": "0001_opposite_the_leader",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1740955308759,
+      "tag": "0002_hot_human_cannonball",
+      "breakpoints": true
     }
   ]
 }
