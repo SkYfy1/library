@@ -1,33 +1,20 @@
-"use client";
-
-import { cn, getInitials } from "@/lib/utils";
+import { getInitials } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Session } from "next-auth";
+import { Button } from "./ui/button";
+import { signOutUser } from "@/lib/actions/auth";
 
 const Header = ({ session }: { session: Session }) => {
-  const pathname = usePathname();
   return (
     <header className="my-10 flex justify-between gap-5">
       <Link href="/" className="flex gap-4 items-center">
         <Image src="/icons/logo.svg" width={40} height={40} alt="logo-image" />
         <p className="text-white font-ibm-plex-sans font-semibold">BookWise</p>
       </Link>
-      <ul className="flex items-center gap-8">
-        <li>
-          <Link
-            href="/library"
-            className={cn(
-              "text-base cursor-pointer capitalize",
-              pathname === "/library" ? "text-light-200" : "text-light-100"
-            )}
-          >
-            Library
-          </Link>
-        </li>
+      <ul className="flex items-center gap-5">
         <li>
           <Link href="/my-profile">
             <Avatar>
@@ -36,6 +23,11 @@ const Header = ({ session }: { session: Session }) => {
               </AvatarFallback>
             </Avatar>
           </Link>
+        </li>
+        <li>
+          <form action={signOutUser}>
+            <Button>Log out</Button>
+          </form>
         </li>
       </ul>
     </header>

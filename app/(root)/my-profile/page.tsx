@@ -1,17 +1,16 @@
 import BookList from "@/components/BookList";
-import { Button } from "@/components/ui/button";
 import { sampleBooks } from "@/constants";
-import { signOutUser } from "@/lib/actions/auth";
-import { sendWelcomeEmail } from "@/lib/actions/email";
+import { db } from "@/db/drizzle";
+import { books } from "@/db/schema";
 import React from "react";
 
-const Page = () => {
+const Page = async () => {
+  // fetch user borrowed books - implement pls
+  const bookArr = await db.select().from(books).limit(10);
   return (
     <>
-      <form className="mb-10" action={signOutUser}>
-        <Button>Log out</Button>
-      </form>
-      <BookList title="Borrowed Books" books={sampleBooks} />
+      {/* Placeholder */}
+      <BookList title="Borrowed Books" books={bookArr} />
     </>
   );
 };
