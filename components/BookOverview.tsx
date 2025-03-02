@@ -5,6 +5,8 @@ import BorrowBook from "./BorrowBook";
 import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 type Props = {
   userId: string;
@@ -28,8 +30,6 @@ const BookOverview = async ({
     .from(users)
     .where(eq(users.id, userId))
     .limit(1);
-
-  if (!user) return null;
 
   const borrowingEligibility = {
     isEligible: availableCopies > 0 && user.status === "APPROVED",
@@ -65,11 +65,26 @@ const BookOverview = async ({
           </p>
         </div>
         <p className="book-description">{description}</p>
-        <BorrowBook
-          bookId={id}
-          userId={userId}
-          borrowingEligibility={borrowingEligibility}
-        />
+        {borrowingEligibility.isEligible ? (
+          <BorrowBook
+            bookId={id}
+            userId={userId}
+            borrowingEligibility={borrowingEligibility}
+          />
+        ) : (
+          // change color
+          // implement asking for permission
+          <div className="flex gap-8 items-center w-full">
+            <h2 className="text-xl text-light-200 underline underline-offset-4">
+              You don't have permission to borrow the book
+            </h2>
+            <Button className="book-overview_btn">
+              <p className="font-bebas-neue text-xl text-dark-100">
+                Get permission
+              </p>
+            </Button>
+          </div>
+        )}
       </div>
       <div className="relative flex flex-1 justify-center">
         <div className="relative">
