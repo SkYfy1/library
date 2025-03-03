@@ -21,6 +21,7 @@ interface Book {
   summary: string;
   createdAt: Date | null;
   isLoanedBook?: boolean;
+  borrowInfo?: { borrowDate: Date; dueDate: string };
 }
 
 interface AuthCredentials {

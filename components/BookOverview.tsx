@@ -6,7 +6,7 @@ import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
+import PermissionButton from "./PermissionButton";
 
 type Props = {
   userId: string;
@@ -74,16 +74,7 @@ const BookOverview = async ({
         ) : (
           // change color
           // implement asking for permission
-          <div className="flex gap-8 items-center w-full">
-            <h2 className="text-xl text-light-200 underline underline-offset-4">
-              You don't have permission to borrow the book
-            </h2>
-            <Button className="book-overview_btn">
-              <p className="font-bebas-neue text-xl text-dark-100">
-                Get permission
-              </p>
-            </Button>
-          </div>
+          <PermissionButton />
         )}
       </div>
       <div className="relative flex flex-1 justify-center">

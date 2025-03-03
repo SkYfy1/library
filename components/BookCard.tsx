@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import BookCover from "./BookCover";
-import { cn } from "@/lib/utils";
+import { cn, getReturnDate } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "./ui/button";
 
@@ -12,6 +12,7 @@ const BookCard = ({
   coverColor,
   coverUrl,
   isLoanedBook = false,
+  borrowInfo,
 }: Book) => (
   <li className={cn(isLoanedBook && "xs:w-52 w-full")}>
     <Link
@@ -34,7 +35,9 @@ const BookCard = ({
               height={18}
               className="object-contain"
             />
-            <p className="text-light-100">11 days left to return</p>
+            <p className="text-light-100">
+              {getReturnDate(borrowInfo?.dueDate as string)} days left to return
+            </p>
           </div>
           <Button className="book-btn">Download receipt</Button>
         </div>

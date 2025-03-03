@@ -1,16 +1,20 @@
+import { auth } from "@/auth";
 import BookList from "@/components/BookList";
-import { sampleBooks } from "@/constants";
-import { db } from "@/db/drizzle";
-import { books } from "@/db/schema";
+import { getBorrowedBooks } from "@/lib/data/book";
 import React from "react";
 
 const Page = async () => {
-  // fetch user borrowed books - implement pls
-  const bookArr = await db.select().from(books).limit(10);
+  const session = await auth();
+  const borrowData = await getBorrowedBooks(session?.user?.id!);
+
   return (
     <>
       {/* Placeholder */}
-      <BookList title="Borrowed Books" books={bookArr} />
+      <BookList
+        title="Borrowed Books"
+        books={borrowData.data!}
+        containerClassName="w-full"
+      />
     </>
   );
 };
