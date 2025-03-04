@@ -1,4 +1,6 @@
-import { getInitials } from "@/lib/utils";
+"use client";
+
+import { cn, getInitials } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,8 +8,11 @@ import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Session } from "next-auth";
 import { Button } from "./ui/button";
 import { signOutUser } from "@/lib/actions/auth";
+import { usePathname } from "next/navigation";
 
 const Header = ({ session }: { session: Session }) => {
+  const pathname = usePathname();
+
   return (
     <header className="my-10 flex justify-between gap-5">
       <Link href="/" className="flex gap-4 items-center">
@@ -15,6 +20,22 @@ const Header = ({ session }: { session: Session }) => {
         <p className="text-white font-ibm-plex-sans font-semibold">BookWise</p>
       </Link>
       <ul className="flex items-center gap-5">
+        <li
+          className={cn(
+            "mr-2",
+            pathname === "/" ? "text-light-200" : "text-light-100"
+          )}
+        >
+          <Link href="/">Home</Link>
+        </li>
+        <li
+          className={cn(
+            "text-white mr-2",
+            pathname === "/search" ? "text-light-200" : "text-light-100"
+          )}
+        >
+          <Link href="/search">Search</Link>
+        </li>
         <li>
           <Link href="/my-profile">
             <Avatar>
@@ -26,7 +47,22 @@ const Header = ({ session }: { session: Session }) => {
         </li>
         <li>
           <form action={signOutUser}>
-            <Button>Log out</Button>
+            <Button className="bg-transparent text-red-800 hover:bg-transparent">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                />
+              </svg>
+            </Button>
           </form>
         </li>
       </ul>

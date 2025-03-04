@@ -1,6 +1,6 @@
 import { db } from "@/db/drizzle";
 import { books, borrowRecords } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { desc, eq, ilike } from "drizzle-orm";
 
 export const getBorrowedBooks = async (userId: string) => {
   // { bookId: borrowRecords.bookId }
@@ -26,4 +26,14 @@ export const getBorrowedBooks = async (userId: string) => {
     success: true,
     data: bookArr,
   };
+};
+
+export const getFilteredBooks = async (filter: string) => {
+  const latestBooks = (await db
+    .select()
+    .from(books)
+    .where(ilike(books.title, `%${filter}%`))
+    .orderBy(desc(books.createdAt))) as Book[];
+
+  return latestBooks;
 };

@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import BookList from "@/components/BookList";
 import BookOverview from "@/components/BookOverview";
 import BookVideo from "@/components/BookVideo";
 import { db } from "@/db/drizzle";
@@ -20,6 +21,8 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     .limit(1);
   if (!bookDetails) redirect("/404");
 
+  const booksList = await db.select().from(books).limit(6);
+
   console.log(bookDetails);
   return (
     <>
@@ -40,6 +43,9 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </section>
         </div>
         {/* Similar books */}
+        <div className="flex-[1.5]">
+          <BookList text="hidden" title="Similar Books" books={booksList} />
+        </div>
       </div>
     </>
   );

@@ -4,11 +4,21 @@ import BookCard from "./BookCard";
 interface Props {
   title: string;
   books: Book[];
+  text?: string | null;
   containerClassName?: string;
 }
 
-const BookList = ({ title, books, containerClassName }: Props) => {
+const BookList = ({ title, text = null, books, containerClassName }: Props) => {
+  if (books.length < 2) {
+    return (
+      <h1 className="text-light-100 text-4xl flex justify-center tracking-widest">
+        No books found matching the specified filter
+      </h1>
+    );
+  }
+
   if (books.length < 2) return;
+
   return (
     <section className={containerClassName}>
       <h2 className="font-bebas-neue text-4xl text-light-100">{title}</h2>
@@ -18,6 +28,7 @@ const BookList = ({ title, books, containerClassName }: Props) => {
             key={book.title}
             {...book}
             isLoanedBook={book.borrowInfo && true}
+            text={text}
           />
         ))}
       </ul>
