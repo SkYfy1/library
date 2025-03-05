@@ -9,14 +9,6 @@ interface Props {
 }
 
 const BookList = ({ title, text = null, books, containerClassName }: Props) => {
-  if (books.length < 2) {
-    return (
-      <h1 className="text-light-100 text-4xl flex justify-center tracking-widest">
-        No books found matching the specified filter
-      </h1>
-    );
-  }
-
   if (books.length < 2) return;
 
   return (

@@ -18,7 +18,7 @@ const Search = () => {
     }
 
     replace(`${pathname}?${searchParams.toString()}`);
-  }, 300);
+  }, 500);
   return (
     <div className="w-full relative">
       <Input
