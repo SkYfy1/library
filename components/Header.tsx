@@ -9,21 +9,34 @@ import { Session } from "next-auth";
 import { Button } from "./ui/button";
 import { signOutUser } from "@/lib/actions/auth";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const Header = ({ session }: { session: Session }) => {
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
 
   return (
-    <header className="my-10 flex justify-between gap-5">
+    <header className="my-10 flex justify-between gap-5 ">
       <Link href="/" className="flex gap-4 items-center">
-        <Image src="/icons/logo.svg" width={40} height={40} alt="logo-image" />
-        <p className="text-white font-ibm-plex-sans font-semibold">BookWise</p>
+        <Image
+          src={
+            resolvedTheme === "light" ? "/icons/book.svg" : "/icons/logo.svg"
+          }
+          width={40}
+          height={40}
+          alt="logo-image"
+        />
+        <p className="dark:text-white  text-gray-700 font-ibm-plex-sans font-semibold">
+          BookWise
+        </p>
       </Link>
-      <ul className="flex items-center gap-5">
+      <ul className="flex items-center gap-3 ">
         <li
           className={cn(
             "mr-2",
-            pathname === "/" ? "text-light-200" : "text-light-100"
+            pathname === "/"
+              ? "dark:text-light-200 text-blue-950"
+              : "dark:text-light-100 text-gray-700"
           )}
         >
           <Link href="/">Home</Link>
@@ -31,7 +44,9 @@ const Header = ({ session }: { session: Session }) => {
         <li
           className={cn(
             "text-white mr-2",
-            pathname === "/search" ? "text-light-200" : "text-light-100"
+            pathname === "/search"
+              ? "dark:text-light-200 text-blue-950"
+              : "dark:text-light-100 text-gray-700"
           )}
         >
           <Link href="/search">Search</Link>
@@ -39,7 +54,7 @@ const Header = ({ session }: { session: Session }) => {
         <li>
           <Link href="/my-profile">
             <Avatar>
-              <AvatarFallback className=" bg-amber-100">
+              <AvatarFallback className=" bg-amber-100 dark:text-black text-black">
                 {getInitials(session?.user?.name || "")}
               </AvatarFallback>
             </Avatar>

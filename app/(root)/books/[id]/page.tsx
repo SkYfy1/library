@@ -23,19 +23,18 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const booksList = await db.select().from(books).limit(6);
 
-  console.log(bookDetails);
   return (
     <>
       <BookOverview {...bookDetails} userId={session?.user?.id as string} />
       <div className="book-details">
-        <div className="flex-[1.5]">
+        <div className="flex-[1.5] bg-light-700 dark:bg-transparent p-6 dark:p-0 rounded-2xl">
           <section className="flex flex-col gap-7">
             <h3>Video</h3>
             <BookVideo videoUrl={bookDetails.videoUrl} />
           </section>
           <section className="mt-10 flex flex-col gap-7">
             <h3>Summary</h3>
-            <div className="space-y-5 text-xl text-light-100">
+            <div className="space-y-5 text-xl dark:text-light-100 text-gray-800">
               {bookDetails.summary.split("\n").map((line, i) => (
                 <p key={i}>{line}</p>
               ))}

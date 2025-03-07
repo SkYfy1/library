@@ -5,8 +5,8 @@ import BorrowBook from "./BorrowBook";
 import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { Button } from "./ui/button";
-import PermissionButton from "./PermissionButton";
+import { toast } from "sonner";
+import EventButton from "./EventButton";
 
 type Props = {
   userId: string;
@@ -39,17 +39,26 @@ const BookOverview = async ({
         : "You are not eligible to borrow this book",
   };
 
+  const getPermission = () => {
+    toast("Admin have been notified");
+  };
+
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">
         <h1>{title}</h1>
         <div className="book-info">
           <p>
-            By <span className="font-semibold text-light-200">{author}</span>
+            By{" "}
+            <span className="font-semibold dark:text-light-200 text-primary-admin">
+              {author}
+            </span>
           </p>
           <p>
             Category{" "}
-            <span className="font-semibold text-light-200">{genre}</span>
+            <span className="font-semibold dark:text-light-200 text-primary-admin">
+              {genre}
+            </span>
           </p>
           <div className="flex gap-1">
             <Image src="/icons/star.svg" alt="star" height={22} width={22} />
@@ -74,7 +83,12 @@ const BookOverview = async ({
         ) : (
           // change color
           // implement asking for permission
-          <PermissionButton />
+          <div className="flex gap-8 items-center w-full">
+            <h2 className="text-xl text-light-200 underline underline-offset-4">
+              You don't have permission to borrow the book
+            </h2>
+            <EventButton handler={getPermission} text="Get permission" />
+          </div>
         )}
       </div>
       <div className="relative flex flex-1 justify-center">

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { borrowBook } from "@/lib/actions/book";
+import { useTheme } from "next-themes";
 
 interface Props {
   bookId: string;
@@ -20,6 +21,7 @@ const BorrowBook = ({
 }: Props) => {
   const router = useRouter();
   const [borrowing, setBorrowing] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   const handleBorrow = async () => {
     if (!isEligible) {
@@ -60,8 +62,13 @@ const BorrowBook = ({
       onClick={handleBorrow}
       disabled={borrowing}
     >
-      <Image src="/icons/book.svg" width={20} height={20} alt="book" />
-      <p className="font-bebas-neue text-xl text-dark-100">
+      <Image
+        src={resolvedTheme === "dark" ? "/icons/book.svg" : "/icons/logo.svg"}
+        width={20}
+        height={20}
+        alt="book"
+      />
+      <p className="font-bebas-neue text-xl dark:text-dark-100 text-white">
         {borrowing ? "Borrowing..." : "Borrow book"}
       </p>
     </Button>

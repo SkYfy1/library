@@ -17,8 +17,9 @@ const FilteredBookList = async ({
   if (books.length < 2) {
     return (
       <>
-        <h1 className="text-light-100 text-4xl">
-          Result for <span className="text-light-200">{filter}</span>
+        <h1 className="dark:text-light-100 text-gray-800 text-4xl">
+          Result for{" "}
+          <span className="dark:text-light-200 text-blue-900">{filter}</span>
         </h1>
         <section className="flex justify-center flex-col items-center mt-12 gap-6 max-w-96 m-auto">
           <Image
@@ -27,10 +28,10 @@ const FilteredBookList = async ({
             height={200}
             alt="not-found-image"
           />
-          <h1 className="text-white capitalize font-semibold text-2xl">
+          <h1 className="dark:text-text-white text-gray-800 capitalize font-semibold text-2xl">
             No results found
           </h1>
-          <p className="text-light-100 text-base">
+          <p className="dark:text-light-100 text-gray-900 text-base">
             We couldn’t find any books matching your search.
             <br /> Try using different keywords or check for typos.
           </p>

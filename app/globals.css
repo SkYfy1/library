@@ -58,15 +58,15 @@
 
   /* Book Card */
   .book-title {
-    @apply mt-2 line-clamp-1 text-base font-semibold text-white xs:text-xl;
+    @apply mt-2 line-clamp-1 text-base font-semibold dark:text-white text-gray-800 xs:text-xl;
   }
 
   .book-genre {
-    @apply mt-1 line-clamp-1 text-sm italic text-light-100 xs:text-base;
+    @apply mt-1 line-clamp-1 text-sm italic dark:text-light-100 text-primary-admin xs:text-base;
   }
 
   .book-loaned {
-    @apply flex flex-row items-center gap-1 max-xs:justify-center;
+    @apply flex flex-row items-center gap-1 max-xs:justify-center rounded-md;
   }
 
   .book-btn {
@@ -110,15 +110,15 @@
 
   /* Book Overview */
   .book-overview {
-    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8;
+    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 bg-light-700 dark:bg-transparent p-6 dark:p-0 rounded-2xl;
   }
 
   .book-overview h1 {
-    @apply text-5xl font-semibold text-white md:text-7xl;
+    @apply text-5xl font-semibold dark:text-white text-gray-800 md:text-7xl;
   }
 
   .book-info {
-    @apply mt-7 flex flex-row flex-wrap gap-4 text-xl text-light-100;
+    @apply mt-7 flex flex-row flex-wrap gap-4 text-xl dark:text-light-100 text-gray-800;
   }
 
   .book-copies {
@@ -126,19 +126,19 @@
   }
 
   .book-copies p {
-    @apply text-xl text-light-100;
+    @apply text-xl dark:text-light-100 text-gray-800;
   }
 
   .book-copies p span {
-    @apply ml-2 font-semibold text-primary;
+    @apply ml-2 font-semibold dark:text-primary text-primary-admin;
   }
 
   .book-description {
-    @apply mt-2 text-justify text-xl text-light-100;
+    @apply mt-2 text-justify text-xl dark:text-light-100 text-gray-800;
   }
 
   .book-overview_btn {
-    @apply mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full !important;
+    @apply mt-4 min-h-14 w-fit dark:bg-primary bg-primary-admin hover:bg-primary-admin/95 dark:text-dark-100 text-primary dark:hover:bg-primary/90 max-md:w-full !important;
   }
 
   /* File Upload */
@@ -277,7 +277,7 @@
 
   /* Root */
   .root-container {
-    @apply flex min-h-screen flex-1 flex-col bg-pattern bg-cover bg-top bg-dark-100 px-5 xs:px-10 md:px-16;
+    @apply flex min-h-screen flex-1 flex-col dark:bg-pattern bg-light-300 bg-cover bg-top dark:bg-dark-100 px-5 xs:px-10 md:px-16;
   }
 
   /* Book Details */
@@ -286,7 +286,7 @@
   }
 
   .book-details h3 {
-    @apply text-xl font-semibold text-primary;
+    @apply text-xl font-semibold dark:text-primary text-primary-admin;
   }
 
   /* Library */

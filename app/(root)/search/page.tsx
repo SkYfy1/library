@@ -12,13 +12,14 @@ const Page = async ({
   const query = searchParam?.query || "";
   return (
     <>
-      <section className="text-white flex flex-col gap-6 items-center m-auto max-w-md mb-12">
+      <section className="dark:text-white text-gray-800 flex flex-col gap-6 items-center m-auto max-w-md mb-12">
         <h4 className="text-base uppercase tracking-wider">
           Discover Your Next Great Read:
         </h4>
         <h1 className="text-4xl font-semibold tracking-wide">
           Explore and Search for <br />
-          <span className="text-light-200">Any Book</span> In Our Library
+          <span className="dark:text-light-200 text-blue-900">Any Book</span> In
+          Our Library
         </h1>
         <Search />
       </section>

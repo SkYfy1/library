@@ -38,7 +38,7 @@ const BookCard = ({
               height={18}
               className="object-contain"
             />
-            <p className="text-light-100">
+            <p className="dark:text-light-100 text-blue-800">
               {getReturnDate(borrowInfo?.dueDate as string)} days left to return
             </p>
           </div>
