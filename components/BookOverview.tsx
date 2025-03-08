@@ -39,7 +39,7 @@ const BookOverview = async ({
         : "You are not eligible to borrow this book",
   };
 
-  const getPermission = () => {
+  const getPermission = async () => {
     "use server";
     toast("Admin have been notified");
   };
