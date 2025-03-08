@@ -18,7 +18,8 @@ const Page = async () => {
     .where(eq(users.id, session?.user?.id!));
 
   // console.log(session?.user);
-  // console.log(userImage[0].university_card);
+  console.log(userImage[0]);
+  console.log("userImage:", userImage);
 
   return (
     <div className="flex justify-between gap-12">
