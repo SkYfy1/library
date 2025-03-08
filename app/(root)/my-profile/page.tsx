@@ -13,7 +13,7 @@ const Page = async () => {
   const session = await auth();
   const borrowData = await getBorrowedBooks(session?.user?.id!);
   const userImage = await db
-    .select({ university_card: users.universityCard })
+    .select({ universityCard: users.universityCard })
     .from(users)
     .where(eq(users.id, session?.user?.id!));
 
@@ -28,7 +28,7 @@ const Page = async () => {
           email={session?.user?.email!}
           name={session?.user?.name!}
           id={session?.user?.id!}
-          imageUrl={userImage[0].university_card}
+          imageUrl={userImage[0].universityCard}
         />
         <div className="mt-10 items-center flex flex-col gap-2">
           <h1 className="dark:text-white text-gray-700 font-bold text-2xl">
