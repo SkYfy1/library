@@ -10,7 +10,7 @@ interface Props {
 }
 
 const BookList = ({ title, text = null, books, containerClassName }: Props) => {
-  if (books?.length < 2) return;
+  if (books?.length < 2) return null;
 
   return (
     <section
@@ -29,7 +29,7 @@ const BookList = ({ title, text = null, books, containerClassName }: Props) => {
           title === "Borrowed Books" && "justify-between"
         )}
       >
-        {books.map((book) => (
+        {books?.map((book) => (
           <BookCard
             key={book.title}
             {...book}
