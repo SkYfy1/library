@@ -1,14 +1,12 @@
 import { auth } from "@/auth";
-import BookCard from "@/components/BookCard";
 import BookList from "@/components/BookList";
 import Theme from "@/components/Theme";
 import ProfileCard from "@/components/ui/ProfileCard";
 import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
-import { config } from "@/lib/config";
 import { getBorrowedBooks } from "@/lib/data/book";
 import { eq } from "drizzle-orm";
-import { IKImage } from "imagekitio-next";
+
 import React from "react";
 
 const Page = async () => {
@@ -25,12 +23,20 @@ const Page = async () => {
   return (
     <div className="flex justify-between gap-12">
       {/* Placeholder */}
-      <ProfileCard
-        email={session?.user?.email!}
-        name={session?.user?.name!}
-        id={session?.user?.id!}
-        imageUrl={userImage[0].university_card}
-      />
+      <div className="flex flex-col gap-2 w-full items-center">
+        <ProfileCard
+          email={session?.user?.email!}
+          name={session?.user?.name!}
+          id={session?.user?.id!}
+          imageUrl={userImage[0].university_card}
+        />
+        <div className="mt-10 items-center flex flex-col gap-2">
+          <h1 className="dark:text-white text-gray-700 font-bold text-2xl">
+            Change theme
+          </h1>
+          <Theme />
+        </div>
+      </div>
       {/* <article className="user-card">
         <div className="card-bookmark"></div>
         <div className="flex flex-col mt-16 gap-10">
@@ -62,15 +68,9 @@ const Page = async () => {
       </article> */}
       <BookList
         title="Borrowed Books"
-        books={borrowData.data!}
+        books={borrowData?.data!}
         containerClassName="w-full"
       />
-      {/* <div className="mb-10">
-        <h1 className="dark:text-white text-gray-700 font-medium">
-          Change theme
-        </h1>
-        <Theme />
-      </div> */}
     </div>
   );
 };
