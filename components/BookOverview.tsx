@@ -40,6 +40,7 @@ const BookOverview = async ({
   };
 
   const getPermission = () => {
+    "use server";
     toast("Admin have been notified");
   };
 
