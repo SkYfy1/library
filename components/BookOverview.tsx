@@ -39,11 +39,6 @@ const BookOverview = async ({
         : "You are not eligible to borrow this book",
   };
 
-  const getPermission = async () => {
-    "use server";
-    toast("Admin have been notified");
-  };
-
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">
@@ -88,7 +83,7 @@ const BookOverview = async ({
             <h2 className="text-xl text-light-200 underline underline-offset-4">
               You don't have permission to borrow the book
             </h2>
-            <EventButton handler={getPermission} text="Get permission" />
+            <EventButton text="Get permission" />
           </div>
         )}
       </div>

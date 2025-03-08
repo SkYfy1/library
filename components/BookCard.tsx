@@ -16,7 +16,7 @@ const BookCard = ({
   text,
   containerClassName,
 }: Book & { text: string | null; containerClassName: string }) => {
-  console.log(coverColor);
+  // console.log(coverColor);
   return (
     <li className={cn(isLoanedBook && "xs:w-64 w-full", containerClassName)}>
       <Link

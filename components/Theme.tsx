@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import EventButton from "./EventButton";
 import { useTheme } from "next-themes";
+import { Button } from "./ui/button";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -12,10 +13,9 @@ const Theme = () => {
 
   if (!mounted) return null;
   return (
-    <EventButton
-      handler={() => setTheme(theme === "dark" ? "light" : "dark")}
-      text="Click"
-    />
+    <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      Click
+    </Button>
   );
 };
 
