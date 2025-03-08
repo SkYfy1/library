@@ -16,19 +16,28 @@ const BookList = ({ title, text = null, books, containerClassName }: Props) => {
     <section
       className={cn(
         "bg-light-700 dark:bg-transparent p-4 rounded-2xl dark:p-0",
-        containerClassName
+        containerClassName,
+        title === "Borrowed Books" && "dark:p-8"
       )}
     >
       <h2 className="font-bebas-neue text-4xl dark:text-light-100 text-gray-800">
         {title}
       </h2>
-      <ul className="book-list">
+      <ul
+        className={cn(
+          "book-list",
+          title === "Borrowed Books" && "justify-between"
+        )}
+      >
         {books.map((book) => (
           <BookCard
             key={book.title}
             {...book}
             isLoanedBook={book.borrowInfo && true}
             text={text}
+            containerClassName={
+              book.borrowInfo && true ? "p-6 bg-gray-800 rounded-lg" : ""
+            }
           />
         ))}
       </ul>

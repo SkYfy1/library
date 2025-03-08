@@ -28,7 +28,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
 
     await db
       .update(users)
-      .set({ lastActivityDate: new Date().toDateString().slice(0, 10) })
+      .set({ lastActivityDate: new Date().toDateString() })
       .where(eq(users.id, session.user.id));
   });
 
