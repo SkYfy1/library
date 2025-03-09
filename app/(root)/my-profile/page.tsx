@@ -1,36 +1,35 @@
 import { auth } from "@/auth";
 import BookList from "@/components/BookList";
+import ProfileCardSkeleton from "@/components/skeletons/ProfileCardSkeleton";
 import Theme from "@/components/Theme";
 import ProfileCard from "@/components/ui/ProfileCard";
 import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
 import { getBorrowedBooks } from "@/lib/data/book";
+import { getUserImage } from "@/lib/data/user";
 import { eq } from "drizzle-orm";
 
-import React from "react";
+import React, { Suspense } from "react";
 
 const Page = async () => {
   const session = await auth();
   const borrowData = await getBorrowedBooks(session?.user?.id!);
-  const userImage = await db
-    .select()
-    .from(users)
-    .where(eq(users.id, session?.user?.id!));
+  const promise = getUserImage(session?.user?.id);
 
   // console.log(session?.user);
-  console.log(userImage[0]);
-  console.log("userImage:", userImage);
 
   return (
     <div className="flex justify-between gap-12">
       {/* Placeholder */}
       <div className="flex flex-col gap-2 w-full items-center">
-        {/* <ProfileCard
-          email={session?.user?.email!}
-          name={session?.user?.name!}
-          id={session?.user?.id!}
-          imageUrl={userImage[0].universityCard}
-        /> */}
+        <Suspense fallback={<ProfileCardSkeleton />}>
+          <ProfileCard
+            email={session?.user?.email!}
+            name={session?.user?.name!}
+            id={session?.user?.id!}
+            promise={promise}
+          />
+        </Suspense>
         <div className="mt-10 items-center flex flex-col gap-2">
           <h1 className="dark:text-white text-gray-700 font-bold text-2xl">
             Change theme

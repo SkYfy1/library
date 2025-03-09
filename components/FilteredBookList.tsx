@@ -28,7 +28,7 @@ const FilteredBookList = async ({
             height={200}
             alt="not-found-image"
           />
-          <h1 className="dark:text-text-white text-gray-800 capitalize font-semibold text-2xl">
+          <h1 className="dark:text-light-100 text-gray-800 capitalize font-semibold text-2xl">
             No results found
           </h1>
           <p className="dark:text-light-100 text-gray-900 text-base">
@@ -36,7 +36,7 @@ const FilteredBookList = async ({
             <br /> Try using different keywords or check for typos.
           </p>
           <ClearQueryButton
-            className="uppercase font-bebas-neue text-lg w-full py-6"
+            className="uppercase font-bebas-neue text-lg book-overview_btn w-full py-6"
             text="Clear search"
           />
         </section>

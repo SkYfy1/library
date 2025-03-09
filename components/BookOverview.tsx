@@ -80,7 +80,7 @@ const BookOverview = async ({
           // change color
           // implement asking for permission
           <div className="flex gap-8 items-center w-full">
-            <h2 className="text-xl text-light-200 underline underline-offset-4">
+            <h2 className="text-xl dark:text-light-200 text-primary-admin underline underline-offset-4">
               You don't have permission to borrow the book
             </h2>
             <EventButton text="Get permission" />

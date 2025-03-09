@@ -2,16 +2,20 @@
 
 import { config } from "@/lib/config";
 import { IKImage } from "imagekitio-next";
-import React from "react";
+import React, { use } from "react";
 
 interface Props {
   email: string;
   name: string;
   id: string;
-  imageUrl: string;
+  promise: Promise<string | undefined>;
 }
 
-const ProfileCard = ({ email, name, id, imageUrl }: Props) => {
+const ProfileCard = ({ email, name, id, promise }: Props) => {
+  const userImage = use(promise);
+
+  // console.log(userImage);
+  // console.log("userImage:", userImage);
   return (
     <article className="user-card">
       <div className="card-bookmark"></div>
@@ -19,7 +23,7 @@ const ProfileCard = ({ email, name, id, imageUrl }: Props) => {
         <section className="flex gap-6 items-center">
           <div className="size-36 border-8 border-solid border-gray-600 rounded-full">
             <IKImage
-              path={imageUrl}
+              path={userImage}
               alt="Book cover"
               loading="lazy"
               urlEndpoint={config.env.imagekit.urlEndpoint}
@@ -43,7 +47,7 @@ const ProfileCard = ({ email, name, id, imageUrl }: Props) => {
           <h2 className="font-semibold text-lg">{id}</h2>
         </section>
         <IKImage
-          path={imageUrl}
+          path={userImage}
           alt="Book cover"
           loading="lazy"
           urlEndpoint={config.env.imagekit.urlEndpoint}

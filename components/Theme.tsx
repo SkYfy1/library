@@ -13,7 +13,10 @@ const Theme = () => {
 
   if (!mounted) return null;
   return (
-    <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+    <Button
+      className="book-overview_btn"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+    >
       Click
     </Button>
   );
