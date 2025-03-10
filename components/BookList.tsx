@@ -36,7 +36,9 @@ const BookList = ({ title, text = null, books, containerClassName }: Props) => {
             isLoanedBook={book.borrowInfo && true}
             text={text}
             containerClassName={
-              book.borrowInfo && true ? "p-6 bg-gray-800 rounded-lg" : ""
+              book.borrowInfo && true
+                ? "p-6 dark:bg-gray-800 bg-gray-100 rounded-lg"
+                : ""
             }
           />
         ))}

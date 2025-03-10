@@ -46,17 +46,26 @@ const BookCard = ({
         {isLoanedBook && (
           <div className="mt-3 w-full">
             <div className="book-loaned">
-              <Image
-                src="/icons/calendar.svg"
-                alt="Calendar"
-                width={18}
-                height={18}
-                className="object-contain"
-              />
-              <p className="dark:text-light-100 text-blue-800">
-                {getReturnDate(borrowInfo?.dueDate as string)} days left to
-                return
-              </p>
+              <div className="flex gap-2 mb-2">
+                <Image
+                  src="/icons/calendar.svg"
+                  alt="Calendar"
+                  width={18}
+                  height={18}
+                  className="object-contain"
+                />
+                <p className="dark:text-light-100 text-gray-800">
+                  <span className="text-blue-600 dark:text-primary">
+                    {getReturnDate(borrowInfo?.dueDate as string)}
+                  </span>{" "}
+                  days left to return
+                </p>
+              </div>
+              {getReturnDate(borrowInfo?.dueDate as string) < 0 && (
+                <p className="text-base font-medium text-red-800 underline underline-offset-2">
+                  You are past the refund date
+                </p>
+              )}
             </div>
             <Button className="book-btn">Download receipt</Button>
           </div>
