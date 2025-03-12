@@ -6,7 +6,7 @@ import React from "react";
 
 const UserAvatar = ({ url }: { url: string }) => {
   return (
-    <div className="size-12 rounded-full overflow-hidden">
+    <div className={`size-12 rounded-full overflow-hidden`}>
       <IKImage
         urlEndpoint={config.env.imagekit.urlEndpoint}
         path={url}

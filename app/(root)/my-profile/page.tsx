@@ -19,7 +19,7 @@ const Page = async () => {
   // console.log(session?.user);
 
   return (
-    <div className="flex justify-between gap-12">
+    <div className="flex justify-between flex-col md:flex-row gap-12">
       {/* Placeholder */}
       <div className="flex flex-col gap-2 w-full items-center">
         <Suspense fallback={<ProfileCardSkeleton />}>

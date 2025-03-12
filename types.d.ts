@@ -6,6 +6,19 @@ interface User {
   universityCard: string;
 }
 
+interface UserData {
+  id: string;
+  fullName: string;
+  email: string;
+  universityId: number;
+  password: string;
+  universityCard: string;
+  status: "PENDING" | "REJECTED" | "APPROVED" | null;
+  role: "USER" | "ADMIN" | null;
+  lastActivityDate: string | null;
+  createdAt: Date | null;
+}
+
 interface Book {
   id: string;
   title: string;

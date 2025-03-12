@@ -1,3 +1,4 @@
+import BookTable from "@/components/BookTable";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
@@ -14,7 +15,7 @@ const Page = () => {
         </Button>
       </div>
       <div className="mt-7 w-full overflow-hidden">
-        <p>Table</p>
+        <BookTable />
       </div>
     </section>
   );
