@@ -2,7 +2,7 @@ import UserAvatar from "@/components/Avatar";
 import { cn } from "@/lib/utils";
 import React from "react";
 
-const MiniUser = ({ user }: { user: UserData }) => {
+const MiniUser = ({ user }: { user: AdminUsers }) => {
   return (
     <div
       key={user.id}

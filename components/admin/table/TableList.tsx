@@ -1,10 +1,11 @@
 import UserAvatar from "@/components/Avatar";
 import BookCover from "@/components/BookCover";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React from "react";
 
 interface Props {
-  type: "Books" | "Borrow" | "Users";
+  type: "Books" | "Borrow" | "Users" | "Account Request";
   data: any;
 }
 
@@ -137,6 +138,131 @@ const TableList = ({ type, data }: Props) => {
       </tr>
     );
   }
+
+  if (type === "Account Request") {
+    return (
+      <tr key={data.id}>
+        <td className="p-6 text-sm tracking-wide font-semibold text-left">
+          <div className="flex gap-2 items-center">
+            <UserAvatar url={data.universityCard} />
+            <div>
+              <p>{data.fullName}</p>
+              <p className="text-xs text-gray-500">{data.email}</p>
+            </div>
+          </div>
+        </td>
+        <td className="p-6 text-sm   tracking-wide font-semibold text-left">
+          {data.createdAt?.toDateString().slice(4)}
+        </td>
+        <td className="p-6 text-sm  tracking-wide font-semibold text-left">
+          {data.universityId.toString().slice(0, 11)}
+        </td>
+        <td className="p-6 text-sm tracking-wide font-semibold text-left">
+          <a className="text-blue-500 flex gap-1 items-center">
+            <p>View ID Card</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+          </a>
+        </td>
+        <td className="p-6 text-sm tracking-wide text-left flex gap-8 items-center">
+          <Button className="text-green-800 bg-green-600/20">
+            Approve Account
+          </Button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6 text-red"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+        </td>
+      </tr>
+    );
+  }
+
+  return (
+    <tr>
+      <td className="p-6 text-sm tracking-wide font-semibold text-left">
+        <div className="flex gap-2 items-center">
+          <BookCover
+            className="h-14 w-10"
+            coverColor={data.bookData.coverColor}
+            coverUrl={data.bookData.coverUrl}
+          />
+          <p>{data.bookData.title}</p>
+        </div>
+      </td>
+      <td className="p-6 text-sm tracking-wide font-semibold text-left">
+        <div className="flex gap-2 items-center">
+          <UserAvatar url={data.userData.universityCard} />
+          <div>
+            <p>{data.userData.fullName}</p>
+            <p className="text-xs text-gray-500">{data.userData.email}</p>
+          </div>
+        </div>
+      </td>
+      <td className="p-6 text-sm   tracking-wide font-semibold text-left">
+        <span
+          className={cn(
+            "px-3 py-1.5 rounded-3xl",
+            data.status === "Borrowed"
+              ? "bg-green-200 text-green-800"
+              : "bg-pink-200 text-pink-700"
+          )}
+        >
+          {" "}
+          {data.status}
+        </span>
+      </td>
+      <td className="p-6 text-sm w-1/12 tracking-wide font-semibold text-left">
+        {data.borrowDate?.toDateString()}
+      </td>
+      <td className="p-6 text-sm w-1/12 tracking-wide font-semibold text-left">
+        {data.dueDate}
+      </td>
+      <td className="p-6 text-sm w-1/12 tracking-wide font-semibold text-left">
+        {data.returnDate ?? "Not returned"}
+      </td>
+      <td className="p-6 text-sm w-full tracking-wide flex gap-3">
+        <Button className="text-blue-700 bg-blue-200/60">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+            />
+          </svg>
+          Generate
+        </Button>
+      </td>
+    </tr>
+  );
 };
 
 export default TableList;

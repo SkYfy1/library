@@ -3,11 +3,13 @@ import { cn } from "@/lib/utils";
 import TableList from "./TableList";
 import MiniBook from "../MiniBook";
 import MiniUser from "./MiniUser";
+import MiniBorrowedBook from "../MiniBorrowedBook";
+import MiniAcc from "./MiniAcc";
 
 interface Props {
   headers?: string[];
-  data: any[];
-  type: "Books" | "Borrow" | "Users";
+  data: AdminBooks[] | AdminBorrowedBooks[] | AdminUsers[];
+  type: "Books" | "Borrow" | "Users" | "Account Request";
   size?: "default" | "small";
 }
 
@@ -22,13 +24,20 @@ export const Table = async ({
       <div
         className={cn(
           "grid grid-cols-1 gap-4",
-          type === "Users" && "grid-cols-3"
+          type === "Account Request" && "grid-cols-3"
         )}
       >
         {data.map((el, ind) => {
-          if (type === "Books") return <MiniBook key={ind} book={el} />;
-          if (type === "Users") return <MiniUser key={ind} user={el} />;
-          if (type === "Borrow") return <MiniBook key={ind} book={el} />;
+          if (type === "Books")
+            return <MiniBook key={ind} book={el as AdminBooks} />;
+          if (type === "Users")
+            return <MiniUser key={ind} user={el as AdminUsers} />;
+          if (type === "Borrow")
+            return (
+              <MiniBorrowedBook key={ind} book={el as AdminBorrowedBooks} />
+            );
+          if (type === "Account Request")
+            return <MiniAcc key={ind} account={el as AdminUsers} />;
         })}
       </div>
     );
@@ -59,11 +68,23 @@ export const Table = async ({
           </tbody>
         </table>
       </div>
-      <div className="md:hidden grid grid-cols-1 gap-4">
+      <div
+        className={cn(
+          "md:hidden grid grid-cols-1 gap-4",
+          type === "Account Request" && "grid-cols-2"
+        )}
+      >
         {data.map((el, ind) => {
-          if (type === "Books") return <MiniBook key={ind} book={el} />;
-          if (type === "Users") return <MiniUser key={ind} user={el} />;
-          if (type === "Borrow") return <MiniBook key={ind} book={el} />;
+          if (type === "Books")
+            return <MiniBook key={ind} book={el as AdminBooks} />;
+          if (type === "Users")
+            return <MiniUser key={ind} user={el as AdminUsers} />;
+          if (type === "Borrow")
+            return (
+              <MiniBorrowedBook key={ind} book={el as AdminBorrowedBooks} />
+            );
+          if (type === "Account Request")
+            return <MiniAcc key={ind} account={el as AdminUsers} />;
         })}
       </div>
     </>

@@ -3,13 +3,19 @@ import BookTable from "@/components/BookTable";
 import { Button } from "@/components/ui/button";
 import { db } from "@/db/drizzle";
 import { books } from "@/db/schema";
-import { getUsers } from "@/lib/admin/data";
+import {
+  getAccountRequests,
+  getBorrowedBooks,
+  getUsers,
+} from "@/lib/admin/data";
 import Link from "next/link";
 import React from "react";
 
 const Page = async () => {
   const booksList = await db.select().from(books);
   const users = await getUsers();
+  const borrowedBooks = await getBorrowedBooks();
+  const accounts = await getAccountRequests();
   return (
     <main>
       <section className="flex gap-4 w-full">
@@ -28,14 +34,14 @@ const Page = async () => {
       </section>
       <section className="grid grid-cols-6 grid-rows-2 gap-2 mt-4 h-[75vh]">
         {/*  */}
-        <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-red after-gradient">
+        <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
           <h1 className="mb-2 font-semibold text-lg">Recently added books</h1>
-          <Table type="Books" size="small" data={booksList} />
+          <Table type="Borrow" size="small" data={borrowedBooks} />
         </div>
         {/*  */}
-        <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-blue-900 after-gradient">
+        <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
           <h1 className="mb-8 text-lg font-semibold">Account Requests</h1>
-          <Table type="Users" size="small" data={users} />
+          <Table type="Account Request" size="small" data={accounts} />
         </div>
         {/*  */}
         <div className="col-start-4 row-start-1 col-span-3 row-span-2 rounded-md overflow-hidden p-4 flex flex-col gap-4 bg-white after-gradient">

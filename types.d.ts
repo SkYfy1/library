@@ -62,3 +62,56 @@ interface BorrowBookParams {
   bookId: string;
   userId: string;
 }
+
+interface AdminBorrowedBooks {
+  userData: {
+    fullName: string;
+    id: string;
+    email: string;
+    universityCard: string;
+  };
+  bookData: {
+    title: string;
+    coverUrl: string;
+    coverColor: string;
+    genre: string;
+    author: string;
+  };
+  id: string;
+  userId: string;
+  bookId: string;
+  borrowDate: Date;
+  dueDate: string;
+  returnDate: string | null;
+  status: "BORROWED" | "RETURNED";
+  createdAt: Date | null;
+}
+
+interface AdminBooks {
+  id: string;
+  title: string;
+  author: string;
+  genre: string;
+  rating: number;
+  totalCopies: number;
+  availableCopies: number;
+  description: string;
+  coverColor: string;
+  coverUrl: string;
+  videoUrl: string;
+  summary: string;
+  createdAt: Date | null;
+}
+
+interface AdminUsers {
+  id: string;
+  fullName: string;
+  email: string;
+  universityId: number;
+  password: string;
+  universityCard: string;
+  status: "PENDING" | "APPROVED" | "REJECTED" | null;
+  role: "USER" | "ADMIN" | null;
+  lastActivityDate: string | null;
+  createdAt: Date | null;
+}

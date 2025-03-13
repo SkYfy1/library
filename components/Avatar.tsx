@@ -1,12 +1,19 @@
 "use client";
 
 import { config } from "@/lib/config";
+import { cn } from "@/lib/utils";
 import { IKImage } from "imagekitio-next";
 import React from "react";
 
-const UserAvatar = ({ url }: { url: string }) => {
+const UserAvatar = ({
+  url,
+  className,
+}: {
+  url: string;
+  className?: string;
+}) => {
   return (
-    <div className={`size-12 rounded-full overflow-hidden`}>
+    <div className={cn(`size-12 rounded-full overflow-hidden`, className)}>
       <IKImage
         urlEndpoint={config.env.imagekit.urlEndpoint}
         path={url}
