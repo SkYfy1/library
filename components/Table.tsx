@@ -3,6 +3,8 @@ import React from "react";
 import UserAvatar from "./Avatar";
 import { cn } from "@/lib/utils";
 
+// Depricated
+
 const Table = async () => {
   const users = await getUsers();
 

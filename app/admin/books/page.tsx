@@ -1,9 +1,15 @@
-import BookTable from "@/components/BookTable";
+// import BookTable from "@/components/BookTable";
+import { Table } from "@/components/admin/table/Table";
 import { Button } from "@/components/ui/button";
+import { db } from "@/db/drizzle";
+import { books } from "@/db/schema";
 import Link from "next/link";
 import React from "react";
 
-const Page = () => {
+const headers = ["title", "Author", "genre", "Date Created", "Action"];
+
+const Page = async () => {
+  const booksList = await db.select().from(books);
   return (
     <section className="w-full rounded-2xl bg-white p-7">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -15,7 +21,8 @@ const Page = () => {
         </Button>
       </div>
       <div className="mt-7 w-full overflow-hidden">
-        <BookTable />
+        {/* <BookTable type="default" /> */}
+        <Table headers={headers} data={booksList} type="Books" size="default" />
       </div>
     </section>
   );

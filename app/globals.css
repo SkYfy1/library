@@ -53,26 +53,12 @@
     @apply dark:bg-gray-800 bg-light-700 p-8 rounded-2xl w-full relative h-fit;
   }
 
+  .after-gradient {
+    @apply relative after:content-[''] after:z-10 after:h-24 after:bg-gradient-to-b after:from-transparent after:to-white after:w-full after:absolute after:bottom-0 after:left-0;
+  }
   /* Admin Tables */
-
   .admin-table-container {
     @apply p-6 bg-white text-black flex flex-col gap-4;
-  }
-
-  .table-header {
-    @apply grid grid-cols-8 gap-1 bg-light-100 p-6 rounded-sm text-center;
-  }
-
-  .table-element {
-    @apply grid grid-cols-8 gap-1 p-6 rounded-sm text-center;
-  }
-
-  .table-element > li:first-child {
-    @apply col-span-2 text-start;
-  }
-
-  .table-header > li:first-child {
-    @apply col-span-2 text-start;
   }
 
   .card-bookmark {
