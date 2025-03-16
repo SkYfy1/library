@@ -56,7 +56,7 @@ const MiniBorrowedBook = ({ book }: { book: AdminBorrowedBooks }) => {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="size-6 absolute top-5 right-5 bg-white"
+        className="size-8 rounded-md p-1 absolute top-5 right-5 bg-white text-gray-500"
       >
         <path
           strokeLinecap="round"

@@ -1,5 +1,8 @@
+import SkeletonMiniBook from "@/components/admin/table/skeletons/SkeletonMiniBook";
+import SkeletonMiniAcc from "@/components/admin/table/skeletons/SkeletonMiniAcc";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Loading = () => {
   return (
@@ -30,7 +33,13 @@ const Loading = () => {
               View All
             </Button>
           </div>
-          {/* <Table type="Borrow" size="small" data={borrowedBooks} /> */}
+          <div className="gap-4 flex flex-col">
+            {Array(3)
+              .fill(null)
+              .map((num) => (
+                <SkeletonMiniBook key={uuidv4()} />
+              ))}
+          </div>
         </div>
         {/*  */}
         <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
@@ -41,7 +50,13 @@ const Loading = () => {
               View All
             </Button>
           </div>
-          {/* <Table type="Account Request" size="small" data={accounts} /> */}
+          <div className="grid gap-4 grid-cols-4">
+            {Array(8)
+              .fill(null)
+              .map((num) => (
+                <SkeletonMiniAcc key={uuidv4()} />
+              ))}
+          </div>
         </div>
         {/*  */}
         <div className="col-start-4 row-start-1 col-span-3 row-span-2 rounded-md overflow-hidden p-4 flex flex-col gap-4 bg-white after-gradient">
@@ -70,8 +85,11 @@ const Loading = () => {
             </svg>
             Add New Book
           </div>
-          {/* <BookTable type="mini" /> */}
-          {/* <Table type="Books" size="small" data={booksList} /> */}
+          {Array(6)
+            .fill(null)
+            .map((num) => (
+              <SkeletonMiniBook key={uuidv4()} />
+            ))}
         </div>
       </section>
     </main>
