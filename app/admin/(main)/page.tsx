@@ -7,15 +7,19 @@ import {
   getAccountRequests,
   getBooks,
   getBorrowedBooks,
-  getUsers,
 } from "@/lib/admin/data";
 import Link from "next/link";
 import React from "react";
 
 const Page = async () => {
-  const booksList = await getBooks();
-  const borrowedBooks = await getBorrowedBooks();
-  const accounts = await getAccountRequests();
+  const [booksList, borrowedBooks, accounts] = await Promise.all([
+    getBooks(),
+    getBorrowedBooks(),
+    getAccountRequests(),
+  ]);
+  // const booksList = await getBooks();
+  // const borrowedBooks = await getBorrowedBooks();
+  // const accounts = await getAccountRequests();
   return (
     <main>
       <section className="flex gap-4 w-full">
