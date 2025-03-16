@@ -24,7 +24,7 @@ export const Table = async ({
       <div
         className={cn(
           "grid grid-cols-1 gap-4",
-          type === "Account Request" && "grid-cols-3"
+          type === "Account Request" && "grid-cols-4"
         )}
       >
         {data.map((el, ind) => {
