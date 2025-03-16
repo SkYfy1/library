@@ -25,15 +25,15 @@ const Page = async () => {
       <section className="flex gap-4 w-full">
         <div className="p-4 bg-white w-full rounded-md">
           <h3 className="mb-4 text-sm text-gray-600">Borrowed books</h3>
-          <h1 className="font-bold text-2xl">10</h1>
+          <h1 className="font-bold text-2xl">{borrowedBooks.length}</h1>
         </div>
         <div className="p-4 bg-white  w-full rounded-md">
           <h3 className="mb-4 text-sm text-gray-600">Total users</h3>
-          <h1 className="font-bold text-2xl">10</h1>
+          <h1 className="font-bold text-2xl">{accounts.length}</h1>
         </div>
         <div className="p-4 bg-white  w-full rounded-md">
           <h3 className="mb-4 text-sm text-gray-600">Total books</h3>
-          <h1 className="font-bold text-2xl">10</h1>
+          <h1 className="font-bold text-2xl">{booksList.length}</h1>
         </div>
       </section>
       <section className="grid grid-cols-6 grid-rows-2 gap-2 mt-4 h-[75vh]">

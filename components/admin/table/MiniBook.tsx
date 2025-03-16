@@ -7,7 +7,7 @@ const MiniBook = ({ book }: { book: AdminBooks }) => {
   return (
     <div
       key={book.id}
-      className="bg-light-600 p-4 rounded-lg shadow flex flex-col gap-1"
+      className="bg-gray-150 p-4 rounded-lg shadow flex flex-col gap-1"
     >
       <div className="flex items-center gap-3 text-sm">
         <BookCover

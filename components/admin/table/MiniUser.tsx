@@ -6,7 +6,7 @@ const MiniUser = ({ user }: { user: AdminUsers }) => {
   return (
     <div
       key={user.id}
-      className="bg-light-600 p-4 rounded-lg shadow flex flex-col gap-1"
+      className="bg-gray-150 p-4 rounded-lg shadow flex flex-col gap-1"
     >
       <div className="flex items-center justify-between text-sm">
         <div className="flex gap-2 items-center max-xs:flex-col">

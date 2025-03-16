@@ -97,6 +97,7 @@ export default {
         },
         gray: {
           100: "#CBD5E1",
+          150: "#F8F8FF",
         },
       },
       screens: {

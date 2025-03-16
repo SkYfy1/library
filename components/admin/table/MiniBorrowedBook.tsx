@@ -6,7 +6,7 @@ const MiniBorrowedBook = ({ book }: { book: AdminBorrowedBooks }) => {
   return (
     <div
       key={book.id}
-      className="bg-light-600 p-4 rounded-lg shadow flex flex-col gap-1 relative"
+      className="bg-gray-150 p-4 rounded-lg shadow flex flex-col gap-1 relative"
     >
       <div className="flex items-center gap-3 text-sm">
         <BookCover

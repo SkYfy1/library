@@ -2,7 +2,7 @@ import React from "react";
 
 const SkeletonMiniBook = () => {
   return (
-    <div className="bg-light-600 p-4 rounded-lg shadow flex flex-col gap-1">
+    <div className="bg-gray-150 p-4 rounded-lg shadow flex flex-col gap-1">
       <div className="flex items-center gap-3 text-sm">
         <div className="h-16 w-12 bg-gray-500 animate-pulse rounded-md" />
         <div className="flex flex-col gap-1">
