@@ -1,21 +1,7 @@
-import { Table } from "@/components/admin/table/Table";
-import BookTable from "@/components/BookTable";
 import { Button } from "@/components/ui/button";
-import { db } from "@/db/drizzle";
-import { books } from "@/db/schema";
-import {
-  getAccountRequests,
-  getBorrowedBooks,
-  getUsers,
-} from "@/lib/admin/data";
-import Link from "next/link";
 import React from "react";
 
-const Page = async () => {
-  const booksList = await db.select().from(books);
-  const users = await getUsers();
-  const borrowedBooks = await getBorrowedBooks();
-  const accounts = await getAccountRequests();
+const Loading = () => {
   return (
     <main>
       <section className="flex gap-4 w-full">
@@ -35,26 +21,39 @@ const Page = async () => {
       <section className="grid grid-cols-6 grid-rows-2 gap-2 mt-4 h-[75vh]">
         {/*  */}
         <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
-          <h1 className="mb-2 font-semibold text-lg">Recently added books</h1>
-          <Table type="Borrow" size="small" data={borrowedBooks} />
+          <div className="flex justify-between mb-4">
+            <h1 className="mb-2 font-semibold text-lg">
+              Recently borrowed books
+            </h1>
+
+            <Button className="bg-gray-50 text-purple-700 font-semibold">
+              View All
+            </Button>
+          </div>
+          {/* <Table type="Borrow" size="small" data={borrowedBooks} /> */}
         </div>
         {/*  */}
         <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
-          <h1 className="mb-8 text-lg font-semibold">Account Requests</h1>
-          <Table type="Account Request" size="small" data={accounts} />
+          <div className="flex justify-between mb-4">
+            <h1 className="mb-2 text-lg font-semibold">Account Requests</h1>
+
+            <Button className="bg-gray-50 text-purple-700 font-semibold">
+              View All
+            </Button>
+          </div>
+          {/* <Table type="Account Request" size="small" data={accounts} /> */}
         </div>
         {/*  */}
         <div className="col-start-4 row-start-1 col-span-3 row-span-2 rounded-md overflow-hidden p-4 flex flex-col gap-4 bg-white after-gradient">
           <div className="flex justify-between">
             <h1 className="text-lg font-semibold">Recently added books</h1>
+
             <Button className="bg-gray-50 text-purple-700 font-semibold">
               View All
             </Button>
           </div>
-          <Link
-            href="/admin/books"
-            className="w-full bg-light-100 justify-start p-4 flex items-center gap-2 rounded-md font-semibold"
-          >
+
+          <div className="w-full bg-light-100 justify-start p-4 flex items-center gap-2 rounded-md font-semibold">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -70,13 +69,13 @@ const Page = async () => {
               />
             </svg>
             Add New Book
-          </Link>
+          </div>
           {/* <BookTable type="mini" /> */}
-          <Table type="Books" size="small" data={booksList} />
+          {/* <Table type="Books" size="small" data={booksList} /> */}
         </div>
       </section>
     </main>
   );
 };
 
-export default Page;
+export default Loading;

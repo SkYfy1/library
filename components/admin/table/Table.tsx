@@ -1,9 +1,9 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import TableList from "./TableList";
-import MiniBook from "../MiniBook";
+import MiniBook from "./MiniBook";
 import MiniUser from "./MiniUser";
-import MiniBorrowedBook from "../MiniBorrowedBook";
+import MiniBorrowedBook from "./MiniBorrowedBook";
 import MiniAcc from "./MiniAcc";
 
 interface Props {

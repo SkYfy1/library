@@ -17,6 +17,12 @@ export const getAccountRequests = async () => {
   return accounts;
 };
 
+export const getBooks = async () => {
+  const bookList = await db.select().from(books);
+
+  return bookList;
+};
+
 export const getBorrowedBooks = async () => {
   const booksList = await db.select().from(borrowRecords);
 

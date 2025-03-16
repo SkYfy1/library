@@ -2,7 +2,7 @@ import { db } from "@/db/drizzle";
 import { books } from "@/db/schema";
 import React from "react";
 import BookCover from "./BookCover";
-import MiniBook from "./admin/MiniBook";
+import MiniBook from "./admin/table/MiniBook";
 
 // Depricated
 
