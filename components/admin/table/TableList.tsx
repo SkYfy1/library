@@ -3,6 +3,8 @@ import BookCover from "@/components/BookCover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { DropdownMenuComponent } from "../Dropdown";
+import { changeUserRole } from "@/lib/admin/actions/users";
 
 interface Props {
   type: "Books" | "Borrow" | "Users" | "Account Request";
@@ -67,6 +69,7 @@ const TableList = ({ type, data }: Props) => {
   }
 
   if (type === "Users") {
+    const updateUserWithId = changeUserRole.bind(null, data.id);
     return (
       <tr key={data.id}>
         <td className="p-6 text-sm tracking-wide font-semibold text-left">
@@ -82,7 +85,7 @@ const TableList = ({ type, data }: Props) => {
           {data.createdAt?.toDateString().slice(4)}
         </td>
         <td className="p-6 text-sm   tracking-wide font-semibold text-left">
-          <span
+          {/* <span
             className={cn(
               "px-3 py-1.5 rounded-3xl",
               data.role === "ADMIN"
@@ -92,7 +95,13 @@ const TableList = ({ type, data }: Props) => {
           >
             {" "}
             {data.role}
-          </span>
+          </span> */}
+          <DropdownMenuComponent
+            value={data.role}
+            values={["ADMIN", "USER"]}
+            update={updateUserWithId}
+            // id={data.id}
+          />
         </td>
         <td className="p-6 text-sm  tracking-wide font-semibold text-left">
           10
