@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 export function DropdownMenuComponent({
   value,
@@ -20,9 +21,32 @@ export function DropdownMenuComponent({
   value: string;
   values: string[];
   //   update: (data: string, id: string) => void;
-  update: (data: string) => void;
+  update: (
+    data: string
+  ) => Promise<{ success: boolean; message: string } | undefined>;
   //   id: string;
 }) {
+  const updateStatus = async (newStatus: string) => {
+    const result = await update(newStatus);
+
+    if (result?.success) {
+      toast("Updated", {
+        description: result?.message,
+        action: {
+          label: "x",
+          onClick: () => console.log("oooo"),
+        },
+      });
+    } else {
+      toast("Error", {
+        description: result?.message,
+        action: {
+          label: "x",
+          onClick: () => console.log("oooo"),
+        },
+      });
+    }
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -42,7 +66,7 @@ export function DropdownMenuComponent({
           <DropdownMenuItem
             className="flex justify-between"
             key={data}
-            onClick={() => update(data)}
+            onClick={() => updateStatus(data)}
           >
             <Button
               className={cn(

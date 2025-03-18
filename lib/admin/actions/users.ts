@@ -10,8 +10,14 @@ export const changeUserRole = async (id: string, role: string) => {
     // return { success: false, message: "Недопустимая роль" };
     return;
   }
+  try {
+    await db.update(users).set({ role: role }).where(eq(users.id, id));
 
-  await db.update(users).set({ role: role }).where(eq(users.id, id));
+    revalidatePath("/admin/users");
 
-  revalidatePath("/admin/users");
+    return { success: true, message: "User role updated" };
+  } catch (error) {
+    console.log(error);
+    return { success: false, message: "User role not updated" };
+  }
 };
