@@ -7,6 +7,7 @@ import Header from "@/components/admin/Header";
 import { users } from "@/db/schema";
 import { db } from "@/db/drizzle";
 import { eq } from "drizzle-orm";
+import VerifyUser from "@/components/admin/table/VerifyUser";
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();

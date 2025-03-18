@@ -45,7 +45,12 @@ export const updateBookStatus = async (id: string, value: string) => {
 
     await db
       .update(books)
-      .set({ availableCopies: book[0].availableCopies - 1 })
+      .set({
+        availableCopies:
+          value === "RETURNED"
+            ? book[0].availableCopies + 1
+            : book[0].availableCopies - 1,
+      })
       .where(eq(books.id, borrowResult[0].bookId));
 
     revalidatePath("/admin/borrow-records");

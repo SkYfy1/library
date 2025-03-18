@@ -14,7 +14,9 @@ const Page = async () => {
   const accounts = await getAccountRequests();
   return (
     <section className="admin-table-container">
-      <h1 className="text-2xl mb-6 font-semibold">Borrow Book Requests</h1>
+      <h1 className="text-2xl mb-6 font-semibold">
+        Account Registration Requests
+      </h1>
       <Table
         headers={headers}
         data={accounts}

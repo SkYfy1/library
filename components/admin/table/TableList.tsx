@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { DropdownMenuComponent } from "../Dropdown";
-import { changeUserRole } from "@/lib/admin/actions/users";
+import { changeUserRole, verifyUser } from "@/lib/admin/actions/users";
 import { updateBookStatus } from "@/lib/admin/actions/book";
+import VerifyUser from "./VerifyUser";
 
 interface Props {
   type: "Books" | "Borrow" | "Users" | "Account Request";
@@ -150,6 +151,8 @@ const TableList = ({ type, data }: Props) => {
   }
 
   if (type === "Account Request") {
+    const userApprove = verifyUser.bind(null, data.id, "APPROVED");
+    const userReject = verifyUser.bind(null, data.id, "REJECTED");
     return (
       <tr key={data.id}>
         <td className="p-6 text-sm tracking-wide font-semibold text-left">
@@ -168,7 +171,7 @@ const TableList = ({ type, data }: Props) => {
           {data.universityId.toString().slice(0, 11)}
         </td>
         <td className="p-6 text-sm tracking-wide font-semibold text-left">
-          <a className="text-blue-500 flex gap-1 items-center">
+          <a className="text-blue-500 flex gap-1 items-center cursor-pointer">
             <p>View ID Card</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -187,23 +190,29 @@ const TableList = ({ type, data }: Props) => {
           </a>
         </td>
         <td className="p-6 text-sm tracking-wide text-left flex gap-8 items-center">
-          <Button className="text-green-800 bg-green-600/20">
+          <VerifyUser userApprove={userApprove} userReject={userReject} />
+          {/* <Button
+            className="text-green-800 bg-green-600/20"
+            onClick={userApprove}
+          >
             Approve Account
           </Button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6 text-red"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
+          <button onClick={userReject}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 text-red cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          </button> */}
         </td>
       </tr>
     );
