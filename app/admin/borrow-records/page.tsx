@@ -15,9 +15,7 @@ const headers = [
 ];
 
 const Page = async () => {
-  // const booksList = await db.select().from(borrowRecords);
   const borrowedBooks = await getBorrowedBooks();
-  console.log(borrowedBooks);
   return (
     <section className="admin-table-container">
       <h1 className="text-2xl mb-6 font-semibold">Borrow Book Requests</h1>
@@ -28,7 +26,6 @@ const Page = async () => {
         size="default"
       />
     </section>
-    // <>Meow</>
   );
 };
 
