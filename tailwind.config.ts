@@ -78,6 +78,7 @@ export default {
         },
         light: {
           100: "#D6E0FF",
+          150: "#EAF2FF",
           200: "#EED1AC",
           300: "#F8F8FF",
           400: "#EDF1F1",
