@@ -204,7 +204,7 @@ const BookForm = ({ type, ...book }: Props) => {
           render={({ field }) => (
             <FormItem className="flex flex-col gap-4">
               <FormLabel className="text-base font-normal text-dark-500">
-                Primary Color
+                Book Primary Color
               </FormLabel>
               <FormControl>
                 <ColorPicker

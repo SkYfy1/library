@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { HexColorInput, HexColorPicker } from "react-colorful";
 
 interface Props {
@@ -11,12 +10,14 @@ const ColorPicker = ({ value, onPickerChange }: Props) => {
     <div className="relative flex flex-col gap-2">
       <HexColorPicker color={value} onChange={onPickerChange} />
       <div className="flex items-center">
-        <p>#</p>
-        <HexColorInput
-          color={value}
-          onChange={onPickerChange}
-          className="hex-input"
-        />
+        <div className="book-form_input rounded-md flex gap-1 items-center w-full">
+          <p>#</p>
+          <HexColorInput
+            color={value}
+            onChange={onPickerChange}
+            className="hex-input"
+          />
+        </div>
       </div>
     </div>
   );

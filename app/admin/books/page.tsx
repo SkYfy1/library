@@ -21,7 +21,6 @@ const Page = async () => {
         </Button>
       </div>
       <div className="mt-7 w-full overflow-hidden">
-        {/* <BookTable type="default" /> */}
         <Table headers={headers} data={booksList} type="Books" size="default" />
       </div>
     </section>
