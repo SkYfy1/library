@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { ReactElement, useRef, useState } from "react";
 import { config } from "@/lib/config";
 import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekitio-next";
 import Image from "next/image";
@@ -98,6 +98,14 @@ const FileUpload = ({
     }
   };
 
+  // Change image
+
+  const declineImage = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setFile(null);
+    onFileChange(" ");
+  };
+
   const onValidate = (file: File) => {
     if (type === "image") {
       if (file.size > 20 * 1024 * 1024) {
@@ -149,25 +157,55 @@ const FileUpload = ({
       <button
         className={cn("upload-btn flex-col gap-0", styles.button)}
         onClick={uploadImage}
+        type="button"
       >
         <div className="flex gap-2">
-          <Image
-            src="/icons/upload.svg"
-            alt="upload icon"
-            width={20}
-            height={20}
-            className="object-contain"
-          />
-          <p className={cn("text-base", styles.placeholder)}>{placeholder}</p>
+          {!file ? (
+            <>
+              <Image
+                src="/icons/upload.svg"
+                alt="upload icon"
+                width={20}
+                height={20}
+                className="object-contain"
+              />
+              <p className={cn("text-base", styles.placeholder)}>
+                {placeholder}
+              </p>
+            </>
+          ) : (
+            <div className="bg-blue-300/20 flex gap-1 items-center rounded-md p-1 text-primary-admin font-semibold">
+              {file.filePath
+                .split(".")
+                .map((el, ind) => (ind == 0 ? el.slice(0, 25) + "... " : el))
+                .join(".")}
+              <div onClick={declineImage}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className={cn("size-4 hover:text-red")}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
+              </div>
+            </div>
+          )}
         </div>
-        {file && (
+        {/* {file && (
           <p className={cn("upload-file text-xs", styles.text)}>
             {file.filePath
               .split(".")
               .map((el, ind) => (ind == 0 ? el.slice(0, 25) + "... " : el))
               .join(".")}
           </p>
-        )}
+        )} */}
       </button>
       {progress > 0 && progress != 100 && (
         <div className="w-full rounded-full bg-green-200">
@@ -176,7 +214,7 @@ const FileUpload = ({
           </div>
         </div>
       )}
-      {file &&
+      {/* {file &&
         (type === "image" ? (
           <IKImage
             alt={file.filePath}
@@ -192,7 +230,7 @@ const FileUpload = ({
             height={300}
             className="w-full h-96 rounded-xl"
           />
-        ) : null)}
+        ) : null)} */}
     </ImageKitProvider>
   );
 };

@@ -11,14 +11,14 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const bookData = await db.select().from(books).where(eq(books.id, id));
 
-  console.log(bookData[0]);
+  //   console.log(bookData[0]);
   return (
     <>
       <Button asChild className="back-btn">
         <Link href="/admin/books"> Go back</Link>
       </Button>
       <section className="w-full max-w-2xl">
-        <BookForm />
+        <BookForm {...bookData[0]} />
       </section>
     </>
   );

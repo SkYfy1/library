@@ -31,16 +31,16 @@ const BookForm = ({ type, ...book }: Props) => {
   const form = useForm<z.infer<typeof bookSchema>>({
     resolver: zodResolver(bookSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      author: "",
-      genre: "",
-      rating: 1,
-      totalCopies: 1,
-      coverUrl: "",
-      coverColor: "",
-      videoUrl: "",
-      summary: "",
+      title: book.title ?? "",
+      description: book.description ?? "",
+      author: book.author ?? "",
+      genre: book.genre ?? "",
+      rating: book.rating ?? 1,
+      totalCopies: book.totalCopies ?? 1,
+      coverUrl: book.coverUrl ?? "",
+      coverColor: book.coverColor ?? "",
+      videoUrl: book.videoUrl ?? "",
+      summary: book.summary ?? "",
     },
   });
 
@@ -191,6 +191,8 @@ const BookForm = ({ type, ...book }: Props) => {
                   placeholder="Upload a book cover"
                   folder="books/covers"
                   variant="light"
+                  // ??
+                  value={field.value}
                   onFileChange={field.onChange}
                 />
               </FormControl>
@@ -251,6 +253,8 @@ const BookForm = ({ type, ...book }: Props) => {
                   placeholder="Upload a book trailer"
                   folder="books/videos"
                   variant="light"
+                  // ??
+                  value={field.value}
                   onFileChange={field.onChange}
                 />
               </FormControl>
