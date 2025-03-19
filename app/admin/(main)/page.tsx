@@ -99,7 +99,7 @@ const Page = async () => {
 
           <Link
             href="/admin/books/new"
-            className="w-full bg-light-100 justify-start p-4 flex items-center gap-2 rounded-md font-semibold"
+            className="w-full bg-light-300 justify-start p-4 flex items-center gap-2 rounded-md font-semibold"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
