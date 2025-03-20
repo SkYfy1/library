@@ -40,6 +40,17 @@ export const updateBook = async (params: BookParams, id: string) => {
   }
 };
 
+export const deleteBook = async (id: string) => {
+  try {
+    await db.delete(books).where(eq(books.id, id));
+    revalidatePath("/admin/books");
+    return { success: true, message: "Book deleted!" };
+  } catch (error) {
+    console.log(error);
+    return { success: false, message: "Something went wrong! :(" };
+  }
+};
+
 export const updateBookStatus = async (id: string, value: string) => {
   if (value !== "RETURNED" && value !== "BORROWED") {
     return;

@@ -1,11 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 interface Props {
   children: React.ReactNode;
   close: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 const Modal = ({ children, close }: Props) => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
   return (
     <div
       className="bg-gray-700/80 z-40 w-screen h-screen flex justify-center items-center absolute top-0 left-0"
