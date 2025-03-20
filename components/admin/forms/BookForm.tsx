@@ -19,7 +19,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import ColorPicker from "../ColorPicker";
-import { addBook } from "@/lib/admin/actions/book";
+import { addBook, updateBook } from "@/lib/admin/actions/book";
 import { toast } from "sonner";
 
 interface Props extends Partial<Book> {
@@ -45,11 +45,14 @@ const BookForm = ({ type, ...book }: Props) => {
   });
 
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-    const result = await addBook(values);
+    const result =
+      type === "update"
+        ? await updateBook(values, book.id!)
+        : await addBook(values);
 
     if (result.success) {
       toast("Book uploaded", {
-        description: "Book created successfully",
+        description: "Book created/updated successfully",
         action: {
           label: "x",
           onClick: () => console.log("oooo"),

@@ -25,6 +25,21 @@ export const addBook = async (params: BookParams) => {
   }
 };
 
+export const updateBook = async (params: BookParams, id: string) => {
+  try {
+    const updatedBook = await db
+      .update(books)
+      .set({ ...params })
+      .where(eq(books.id, id))
+      .returning();
+
+    return { success: true, message: "Book updated!", data: updatedBook[0] };
+  } catch (error) {
+    console.log(error);
+    return { success: false, message: "Something went wrong! :(" };
+  }
+};
+
 export const updateBookStatus = async (id: string, value: string) => {
   if (value !== "RETURNED" && value !== "BORROWED") {
     return;
