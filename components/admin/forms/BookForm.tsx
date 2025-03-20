@@ -69,7 +69,10 @@ const BookForm = ({ type, ...book }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 dark:text-dark-500"
+      >
         <FormField
           control={form.control}
           name={"title"}

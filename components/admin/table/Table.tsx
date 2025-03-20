@@ -44,7 +44,7 @@ export const Table = async ({
   }
   return (
     <>
-      <div className="overflow-auto rounded-lg shadow hidden md:block">
+      <div className="overflow-auto rounded-lg shadow hidden md:block dark:text-gray-800">
         <table className="w-full">
           <thead className="bg-light-700">
             <tr>

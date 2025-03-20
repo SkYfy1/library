@@ -16,7 +16,7 @@ const MiniBook = ({ book }: { book: AdminBooks }) => {
           coverUrl={book.coverUrl}
         />
         <div className="flex flex-col gap-1">
-          <p>{book.title} </p>
+          <p className="dark:text-gray-800">{book.title} </p>
           <div className="flex gap-2 items-center text-gray-500">
             <span>By {book.author}</span>
             <div className="bg-gray-500 rounded-full size-1"></div>

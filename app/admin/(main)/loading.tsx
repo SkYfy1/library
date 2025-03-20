@@ -6,18 +6,24 @@ import { v4 as uuidv4 } from "uuid";
 
 const Loading = () => {
   return (
-    <main>
-      <section className="flex gap-4 w-full">
+    <main className="dark:text-gray-800">
+      <section className="flex gap-4 w-full ">
         <div className="p-4 bg-white w-full rounded-md">
-          <h3 className="mb-4 text-sm text-gray-600">Borrowed books</h3>
+          <h3 className="mb-4 font-semibold text-sm text-gray-600">
+            Borrowed books
+          </h3>
           <h1 className="font-bold text-2xl">10</h1>
         </div>
         <div className="p-4 bg-white  w-full rounded-md">
-          <h3 className="mb-4 text-sm text-gray-600">Total users</h3>
+          <h3 className="mb-4 font-semibold text-sm text-gray-600">
+            Total users
+          </h3>
           <h1 className="font-bold text-2xl">10</h1>
         </div>
         <div className="p-4 bg-white  w-full rounded-md">
-          <h3 className="mb-4 text-sm text-gray-600">Total books</h3>
+          <h3 className="mb-4 font-semibold text-sm text-gray-600">
+            Total books
+          </h3>
           <h1 className="font-bold text-2xl">10</h1>
         </div>
       </section>

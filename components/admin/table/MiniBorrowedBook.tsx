@@ -15,7 +15,7 @@ const MiniBorrowedBook = ({ book }: { book: AdminBorrowedBooks }) => {
           coverUrl={book.bookData.coverUrl}
         />
         <div className="flex flex-col gap-1">
-          <p>{book.bookData.title} </p>
+          <p className="dark:text-gray-800">{book.bookData.title} </p>
           <div className="flex gap-2 items-center text-gray-500">
             <span>By {book.bookData.author}</span>
             <div className="bg-gray-500 rounded-full size-1"></div>

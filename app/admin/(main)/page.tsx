@@ -25,22 +25,28 @@ const Page = async () => {
       <section className="flex gap-4 w-full">
         <div className="p-4 bg-white w-full rounded-md">
           <h3 className="mb-4 text-gray-600 font-semibold">Borrowed books</h3>
-          <h1 className="font-bold text-2xl">{borrowedBooks.length}</h1>
+          <h1 className="font-bold text-2xl dark:text-black">
+            {borrowedBooks.length}
+          </h1>
         </div>
         <div className="p-4 bg-white  w-full rounded-md">
           <h3 className="mb-4 text-gray-600 font-semibold">Total users</h3>
-          <h1 className="font-bold text-2xl">{accounts.length}</h1>
+          <h1 className="font-bold text-2xl dark:text-black">
+            {accounts.length}
+          </h1>
         </div>
         <div className="p-4 bg-white  w-full rounded-md">
           <h3 className="mb-4 text-gray-600 font-semibold">Total books</h3>
-          <h1 className="font-bold text-2xl">{booksList.length}</h1>
+          <h1 className="font-bold text-2xl dark:text-black">
+            {booksList.length}
+          </h1>
         </div>
       </section>
       <section className="grid grid-cols-6 grid-rows-2 gap-2 mt-4 h-[75vh]">
         {/*  */}
         <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
           <div className="flex justify-between mb-4">
-            <h1 className="mb-2 font-semibold text-xl">
+            <h1 className="mb-2 font-semibold text-xl dark:text-gray-800">
               Recently borrowed books
             </h1>
             <Link href="/admin/borrow-records">
@@ -54,7 +60,9 @@ const Page = async () => {
         {/*  */}
         <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
           <div className="flex justify-between mb-4">
-            <h1 className="mb-2 text-xl font-semibold">Account Requests</h1>
+            <h1 className="mb-2 text-xl font-semibold dark:text-gray-800">
+              Account Requests
+            </h1>
             <Link href="/admin/account-requests">
               <Button className="bg-gray-50 text-purple-700 font-semibold">
                 View All
@@ -77,7 +85,7 @@ const Page = async () => {
                   </div>
                 </div>
               </div>
-              <h1 className="font-semibold text-lg">
+              <h1 className="font-semibold text-lg dark:text-gray-800">
                 No Pending Account Requests
               </h1>
               <p className="text-gray-400">
@@ -89,7 +97,9 @@ const Page = async () => {
         {/*  */}
         <div className="col-start-4 row-start-1 col-span-3 row-span-2 rounded-md overflow-hidden p-4 flex flex-col gap-4 bg-white after-gradient">
           <div className="flex justify-between">
-            <h1 className="text-xl font-semibold">Recently added books</h1>
+            <h1 className="text-xl font-semibold dark:text-gray-800">
+              Recently added books
+            </h1>
             <Link href="/admin/books">
               <Button className="bg-gray-50 text-purple-700 font-semibold">
                 View All
@@ -99,7 +109,7 @@ const Page = async () => {
 
           <Link
             href="/admin/books/new"
-            className="w-full bg-light-300 justify-start p-4 flex items-center gap-2 rounded-md font-semibold"
+            className="w-full bg-light-300 justify-start p-4 flex items-center gap-2 rounded-md font-semibold dark:text-gray-800"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
