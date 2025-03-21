@@ -1,8 +1,5 @@
 import { Table } from "@/components/admin/table/Table";
-import BookTable from "@/components/BookTable";
 import { Button } from "@/components/ui/button";
-import { db } from "@/db/drizzle";
-import { books } from "@/db/schema";
 import {
   getAccountRequests,
   getBooks,
@@ -17,9 +14,7 @@ const Page = async () => {
     getBorrowedBooks(),
     getAccountRequests(),
   ]);
-  // const booksList = await getBooks();
-  // const borrowedBooks = await getBorrowedBooks();
-  // const accounts = await getAccountRequests();
+
   return (
     <main>
       <section className="flex gap-4 w-full">

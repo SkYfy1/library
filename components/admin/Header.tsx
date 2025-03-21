@@ -1,6 +1,5 @@
 import { Session } from "next-auth";
 import React from "react";
-import Search from "../Search";
 import { Input } from "../ui/input";
 
 const Header = ({ session }: { session: Session }) => {

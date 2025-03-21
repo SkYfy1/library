@@ -16,15 +16,12 @@ export function DropdownMenuComponent({
   value,
   values,
   update,
-  //   id,
 }: {
   value: string;
   values: string[];
-  //   update: (data: string, id: string) => void;
   update: (
     data: string
   ) => Promise<{ success: boolean; message: string } | undefined>;
-  //   id: string;
 }) {
   const updateStatus = async (newStatus: string) => {
     const result = await update(newStatus);

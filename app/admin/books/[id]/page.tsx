@@ -2,7 +2,6 @@ import BookCover from "@/components/BookCover";
 import BookVideo from "@/components/BookVideo";
 import { Button } from "@/components/ui/button";
 import { getBook } from "@/lib/admin/data";
-import { IKVideo } from "imagekitio-next";
 import Link from "next/link";
 import React from "react";
 

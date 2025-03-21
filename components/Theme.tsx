@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import EventButton from "./EventButton";
 import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
 

@@ -1,10 +1,5 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import React from "react";
-
-const shimmer =
-  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
 
 const BookCardSkeleton = () => {
   return (

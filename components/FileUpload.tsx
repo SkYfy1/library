@@ -1,8 +1,8 @@
 "use client";
 
-import React, { ReactElement, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { config } from "@/lib/config";
-import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekitio-next";
+import { ImageKitProvider, IKUpload } from "imagekitio-next";
 import Image from "next/image";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -22,8 +22,6 @@ const {
     imagekit: { publicKey, urlEndpoint },
   },
 } = config;
-
-// ${config.env.apiEndpoint}
 
 const auth = async () => {
   try {

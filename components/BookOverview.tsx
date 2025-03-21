@@ -5,7 +5,6 @@ import BorrowBook from "./BorrowBook";
 import { db } from "@/db/drizzle";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { toast } from "sonner";
 import EventButton from "./EventButton";
 
 type Props = {

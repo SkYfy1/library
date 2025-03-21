@@ -1,4 +1,3 @@
-// import BookTable from "@/components/BookTable";
 import { Table } from "@/components/admin/table/Table";
 import { Button } from "@/components/ui/button";
 import { db } from "@/db/drizzle";

@@ -3,11 +3,8 @@ import BookList from "@/components/BookList";
 import ProfileCardSkeleton from "@/components/skeletons/ProfileCardSkeleton";
 import Theme from "@/components/Theme";
 import ProfileCard from "@/components/ui/ProfileCard";
-import { db } from "@/db/drizzle";
-import { users } from "@/db/schema";
 import { getBorrowedBooks } from "@/lib/data/book";
 import { getUserImage } from "@/lib/data/user";
-import { eq } from "drizzle-orm";
 
 import React, { Suspense } from "react";
 
@@ -15,8 +12,6 @@ const Page = async () => {
   const session = await auth();
   const borrowData = await getBorrowedBooks(session?.user?.id!);
   const promise = getUserImage(session?.user?.id);
-
-  // console.log(session?.user);
 
   return (
     <div className="flex justify-between flex-col md:flex-row gap-12">

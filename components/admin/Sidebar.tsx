@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
-import { auth } from "@/auth";
 import { Session } from "next-auth";
 
 const Sidebar = ({ session }: { session: Session }) => {

@@ -2,7 +2,6 @@ import React from "react";
 import BookList from "./BookList";
 import { getFilteredBooks } from "@/lib/data/book";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import ClearQueryButton from "./ClearQueryButton";
 
 const FilteredBookList = async ({

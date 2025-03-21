@@ -1,6 +1,4 @@
 import { Table } from "@/components/admin/table/Table";
-import { db } from "@/db/drizzle";
-import { books, borrowRecords } from "@/db/schema";
 import { getBorrowedBooks } from "@/lib/admin/data";
 import React from "react";
 
