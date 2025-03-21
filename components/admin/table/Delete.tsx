@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 
 interface Props {
-  children?: React.ReactNode;
+  text: { title: string; p: string };
   handler: () => Promise<{
     success: boolean;
     message: string;
   }>;
 }
 
-const DeleteBook = ({ children, handler }: Props) => {
+const Delete = ({ handler, text }: Props) => {
   const [showModal, setShowModal] = useState(false);
   const changeModalState = () => {
     setShowModal((prev) => !prev);
@@ -73,11 +73,8 @@ const DeleteBook = ({ children, handler }: Props) => {
                 />
               </svg>
             </div>
-            <h1 className="text-2xl font-semibold">Delete Book</h1>
-            <p className="max-w-[26rem] text-center text-gray-500">
-              Book will be fully deleted from database without any change of
-              recovery!
-            </p>
+            <h1 className="text-2xl font-semibold">{text.title}</h1>
+            <p className="max-w-[26rem] text-center text-gray-500">{text.p}</p>
             <Button
               onClick={handler}
               className="w-full py-3 h-auto text-white bg-red-400 hover:bg-red-400/90"
@@ -91,4 +88,4 @@ const DeleteBook = ({ children, handler }: Props) => {
   );
 };
 
-export default DeleteBook;
+export default Delete;

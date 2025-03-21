@@ -36,3 +36,15 @@ export const verifyUser = async (id: string, value: string) => {
     return { success: false, message: "User status not updated" };
   }
 };
+
+export const deleteUser = async (id: string) => {
+  try {
+    await db.delete(users).where(eq(users.id, id));
+    revalidatePath("/admin/users");
+
+    return { success: true, message: "User account was permanently deleted!" };
+  } catch (error) {
+    console.log(error);
+    return { success: false, message: "User account not deleted" };
+  }
+};

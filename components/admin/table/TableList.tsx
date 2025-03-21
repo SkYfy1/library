@@ -4,11 +4,15 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { DropdownMenuComponent } from "../Dropdown";
-import { changeUserRole, verifyUser } from "@/lib/admin/actions/users";
+import {
+  changeUserRole,
+  deleteUser,
+  verifyUser,
+} from "@/lib/admin/actions/users";
 import { deleteBook, updateBookStatus } from "@/lib/admin/actions/book";
 import VerifyUser from "./VerifyUser";
 import Link from "next/link";
-import DeleteBook from "./DeleteBook";
+import Delete from "./Delete";
 
 interface Props {
   type: "Books" | "Borrow" | "Users" | "Account Request";
@@ -58,23 +62,13 @@ const TableList = ({ type, data }: Props) => {
               />
             </svg>
           </Link>
-          {/* <button onClick={deleteWithId}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-8 text-red cursor-pointer"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-              />
-            </svg>
-          </button> */}
-          <DeleteBook handler={deleteWithId} />
+          <Delete
+            text={{
+              title: "Delete Book",
+              p: "Book will be fully deleted from database without any change of recovery!",
+            }}
+            handler={deleteWithId}
+          />
         </td>
       </tr>
     );
@@ -82,6 +76,7 @@ const TableList = ({ type, data }: Props) => {
 
   if (type === "Users") {
     const updateUserWithId = changeUserRole.bind(null, data.id);
+    const deleteUserWithId = deleteUser.bind(null, data.id);
     return (
       <tr key={data.id}>
         <td className="p-6 text-sm tracking-wide font-semibold text-left">
@@ -97,22 +92,10 @@ const TableList = ({ type, data }: Props) => {
           {data.createdAt?.toDateString().slice(4)}
         </td>
         <td className="p-6 text-sm   tracking-wide font-semibold text-left">
-          {/* <span
-            className={cn(
-              "px-3 py-1.5 rounded-3xl",
-              data.role === "ADMIN"
-                ? "bg-green-200 text-green-800"
-                : "bg-pink-200 text-pink-700"
-            )}
-          >
-            {" "}
-            {data.role}
-          </span> */}
           <DropdownMenuComponent
             value={data.role}
             values={["ADMIN", "USER"]}
             update={updateUserWithId}
-            // id={data.id}
           />
         </td>
         <td className="p-6 text-sm  tracking-wide font-semibold text-left">
@@ -141,7 +124,7 @@ const TableList = ({ type, data }: Props) => {
           </a>
         </td>
         <td className="p-6 text-sm   tracking-wide text-left">
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -154,7 +137,14 @@ const TableList = ({ type, data }: Props) => {
               strokeLinejoin="round"
               d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
             />
-          </svg>
+          </svg> */}
+          <Delete
+            text={{
+              title: "Delete account",
+              p: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
+            }}
+            handler={deleteUserWithId}
+          />
         </td>
       </tr>
     );
