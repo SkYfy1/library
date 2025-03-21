@@ -23,6 +23,12 @@ export const getBooks = async () => {
   return bookList;
 };
 
+export const getBook = async (id: string) => {
+  const book = await db.select().from(books).where(eq(books.id, id));
+
+  return book[0];
+};
+
 export const getBorrowedBooks = async () => {
   const booksList = await db.select().from(borrowRecords);
 

@@ -6,6 +6,7 @@ interface Props {
   close: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 const Modal = ({ children, close }: Props) => {
+  // UseEffect prevent scrolling then modal window opened!
   useEffect(() => {
     document.body.style.overflow = "hidden";
 

@@ -15,6 +15,7 @@ const DeleteBook = ({ children, handler }: Props) => {
   const [showModal, setShowModal] = useState(false);
   const changeModalState = () => {
     setShowModal((prev) => !prev);
+    // Scroll to top (modal window)
     window.scrollTo({
       top: 0,
     });

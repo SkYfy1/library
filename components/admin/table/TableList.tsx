@@ -22,11 +22,13 @@ const TableList = ({ type, data }: Props) => {
       <tr>
         <td className="p-6 text-sm tracking-wide font-semibold text-left">
           <div className="flex gap-2 items-center">
-            <BookCover
-              className="h-14 w-10"
-              coverColor={data.coverColor}
-              coverUrl={data.coverUrl}
-            />
+            <Link href={`/admin/books/${data.id}`}>
+              <BookCover
+                className="h-14 w-10"
+                coverColor={data.coverColor}
+                coverUrl={data.coverUrl}
+              />
+            </Link>
             <p>{data.title}</p>
           </div>
         </td>
