@@ -2,6 +2,7 @@
 import { getUsers } from "@/lib/admin/data";
 import React from "react";
 import { Table } from "@/components/admin/table/Table";
+import { auth } from "@/auth";
 
 const headers = [
   "Name",
@@ -14,7 +15,10 @@ const headers = [
 ];
 
 const Page = async () => {
-  const users = await getUsers();
+  const session = await auth();
+  const users = (await getUsers()).filter(
+    (user) => user.id != session?.user?.id
+  );
   return (
     <section className="admin-table-container">
       <h1 className="text-2xl mb-6 font-semibold">All users</h1>
