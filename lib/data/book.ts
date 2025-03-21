@@ -35,6 +35,5 @@ export const getFilteredBooks = async (filter: string) => {
     .where(ilike(books.title, `%${filter}%`))
     .orderBy(desc(books.createdAt))) as Book[];
 
-  await new Promise((res, rej) => setTimeout(res, 5000));
   return latestBooks;
 };

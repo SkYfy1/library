@@ -3,41 +3,21 @@
 import { cn, getInitials } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Session } from "next-auth";
 import { Button } from "./ui/button";
 import { signOutUser } from "@/lib/actions/auth";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 
 const Header = ({ session }: { session: Session }) => {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // ?????
-
-  // if (!mounted) return null;
 
   return (
     <header className="my-10 flex justify-between gap-5 ">
       <Link href="/" className="flex gap-4 items-center">
-        {mounted && (
-          <Image
-            src={
-              // "/icons/logo.svg"
-              resolvedTheme === "light" ? "/icons/book.svg" : "/icons/logo.svg"
-            }
-            width={40}
-            height={40}
-            alt="logo-image"
-          />
-        )}
+        <Image src="/icons/logo.svg" width={40} height={40} alt="logo-image" />
+
         <p className="dark:text-white  text-gray-700 font-ibm-plex-sans font-semibold">
           BookWise
         </p>
