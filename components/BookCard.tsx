@@ -19,7 +19,12 @@ const BookCard = ({
   const isOverDue =
     isLoanedBook && getReturnDate(borrowInfo?.dueDate as string) < 0;
   return (
-    <li className={cn(isLoanedBook && "xs:w-64 w-full", containerClassName)}>
+    <li
+      className={cn(
+        isLoanedBook && "xs:w-64 w-full relative",
+        containerClassName
+      )}
+    >
       <Link
         href={`/books/${id}`}
         className={cn(isLoanedBook && "w-full flex flex-col items-center")}
@@ -44,6 +49,15 @@ const BookCard = ({
 
         {isLoanedBook && (
           <div className="mt-3 w-full">
+            {isOverDue && borrowInfo?.status === "BORROWED" && (
+              <Image
+                src="/icons/warning.svg"
+                alt="Verified"
+                width={36}
+                height={36}
+                className="object-contain absolute -left-2 -top-2 "
+              />
+            )}
             <div className="book-loaned">
               <div className="flex gap-1 items-center">
                 <svg
