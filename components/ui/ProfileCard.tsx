@@ -2,20 +2,20 @@
 
 import { config } from "@/lib/config";
 import { IKImage } from "imagekitio-next";
+import Image from "next/image";
 import React, { use } from "react";
 
 interface Props {
   email: string;
   name: string;
   id: string;
+  verified: boolean;
   promise: Promise<string | undefined>;
 }
 
-const ProfileCard = ({ email, name, id, promise }: Props) => {
+const ProfileCard = ({ email, name, id, verified, promise }: Props) => {
   const userImage = use(promise);
 
-  // console.log(userImage);
-  // console.log("userImage:", userImage);
   return (
     <article className="user-card">
       <div className="card-bookmark"></div>
@@ -33,8 +33,28 @@ const ProfileCard = ({ email, name, id, promise }: Props) => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <p>Verified Student</p>
-            <h2 className="font-semibold text-lg">{name}</h2>
+            <div className="flex gap-1">
+              {verified && (
+                <Image
+                  src="/icons/verified.svg"
+                  alt="Verified"
+                  width={12}
+                  height={12}
+                  className="object-contain"
+                />
+              )}
+              {!verified && (
+                <Image
+                  src="/icons/warning.svg"
+                  alt="Verified"
+                  width={12}
+                  height={12}
+                  className="object-contain"
+                />
+              )}
+              <p className="text-xs">{verified && "Not"} Verified Student</p>
+            </div>
+            <h2 className="font-semibold text-2xl">{name}</h2>
             <p>{email}</p>
           </div>
         </section>

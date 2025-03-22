@@ -13,6 +13,8 @@ const Page = async () => {
   const borrowData = await getBorrowedBooks(session?.user?.id!);
   const promise = getUserImage(session?.user?.id);
 
+  const verified = session?.user.verified;
+
   return (
     <div className="flex justify-between flex-col md:flex-row gap-12">
       {/* Placeholder */}
@@ -23,6 +25,7 @@ const Page = async () => {
             name={session?.user?.name!}
             id={session?.user?.id!}
             promise={promise}
+            verified={verified!}
           />
         </Suspense>
         <div className="mt-10 items-center flex flex-col gap-2">
@@ -32,35 +35,6 @@ const Page = async () => {
           <Theme />
         </div>
       </div>
-      {/* <article className="user-card">
-        <div className="card-bookmark"></div>
-        <div className="flex flex-col mt-16 gap-10">
-          <section className="flex gap-6 items-center">
-            <div className="size-36 border-8 border-solid border-gray-600 rounded-full"></div>
-            <div className="flex flex-col gap-1">
-              <p>Verified Student</p>
-              <h2 className="font-semibold text-lg">{session?.user?.name}</h2>
-              <p>{session?.user?.email}</p>
-            </div>
-          </section>
-          <section className="flex flex-col gap-1">
-            <h3>University</h3>
-            <h2 className="font-semibold text-lg">Snus</h2>
-          </section>
-          <section className="flex flex-col gap-1">
-            <h3>Student ID</h3>
-            <h2 className="font-semibold text-lg">{session?.user?.id}</h2>
-          </section>
-          <IKImage
-            path={userImage[0].university_card}
-            alt="Book cover"
-            loading="lazy"
-            urlEndpoint={config.env.imagekit.urlEndpoint}
-            width={200}
-            height={100}
-          />
-        </div>
-      </article> */}
       <BookList
         title="Borrowed Books"
         books={borrowData?.data!}

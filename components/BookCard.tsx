@@ -18,7 +18,6 @@ const BookCard = ({
   // isLoanedBook hz nado li
   const isOverDue =
     isLoanedBook && getReturnDate(borrowInfo?.dueDate as string) < 0;
-  console.log(isOverDue);
   return (
     <li className={cn(isLoanedBook && "xs:w-64 w-full", containerClassName)}>
       <Link

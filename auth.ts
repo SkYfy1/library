@@ -33,6 +33,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: user[0].id.toString(),
           email: user[0].email.toString(),
           name: user[0].fullName.toString(),
+          verified: true,
         } as User;
       },
     }),
@@ -43,8 +44,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        // console.log(user);
         token.id = user.id;
         token.name = user.name;
+        token.verified = user.verified;
       }
 
       return token;
@@ -53,6 +56,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (session.user) {
         session.user.id = token.id as string;
         session.user.name = token.name as string;
+        session.user.verified = token.verified as boolean;
       }
       return session;
     },
