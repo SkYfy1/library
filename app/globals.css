@@ -82,7 +82,7 @@
   }
 
   .book-loaned {
-    @apply flex flex-col items-center gap-1 max-xs:justify-center rounded-md;
+    @apply flex flex-col gap-1 max-xs:justify-center rounded-md;
   }
 
   .book-btn {

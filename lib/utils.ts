@@ -23,3 +23,25 @@ export const getReturnDate = (date: string): number => {
 
   return Math.round(diffInDays);
 };
+
+export const formatDate = (input: string): string => {
+  const [month, day] = input.split("-");
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const monthIndex = parseInt(month, 10) - 1;
+
+  return `${monthNames[monthIndex]} ${parseInt(day, 10)}`;
+};

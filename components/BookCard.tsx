@@ -1,9 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import BookCover from "./BookCover";
-import { cn, getReturnDate } from "@/lib/utils";
+import { cn, formatDate, getReturnDate } from "@/lib/utils";
 import Image from "next/image";
-import { Button } from "./ui/button";
 
 const BookCard = ({
   id,
@@ -16,23 +15,24 @@ const BookCard = ({
   text,
   containerClassName,
 }: Book & { text: string | null; containerClassName: string }) => {
-  // console.log(coverColor);
+  // isLoanedBook hz nado li
+  const isOverDue =
+    isLoanedBook && getReturnDate(borrowInfo?.dueDate as string) < 0;
+  console.log(isOverDue);
   return (
     <li className={cn(isLoanedBook && "xs:w-64 w-full", containerClassName)}>
       <Link
         href={`/books/${id}`}
         className={cn(isLoanedBook && "w-full flex flex-col items-center")}
       >
-        {isLoanedBook && (
+        {isLoanedBook ? (
           <div
             className={`w-full h-full p-4 rounded-sm`}
-            style={{ backgroundColor: `${coverColor}80` }}
+            style={{ backgroundColor: `${coverColor}70` }}
           >
             <BookCover coverColor={coverColor} coverUrl={coverUrl} />
           </div>
-        )}
-
-        {!isLoanedBook && (
+        ) : (
           <BookCover coverColor={coverColor} coverUrl={coverUrl} />
         )}
 
@@ -46,28 +46,83 @@ const BookCard = ({
         {isLoanedBook && (
           <div className="mt-3 w-full">
             <div className="book-loaned">
-              <div className="flex gap-2 mb-2">
-                <Image
-                  src="/icons/calendar.svg"
-                  alt="Calendar"
-                  width={18}
-                  height={18}
-                  className="object-contain"
-                />
+              <div className="flex gap-1 items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-4 text-green-300"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+                  />
+                </svg>
                 <p className="dark:text-light-100 text-gray-800">
-                  <span className="text-blue-600 dark:text-primary">
-                    {getReturnDate(borrowInfo?.dueDate as string)}
-                  </span>{" "}
-                  days left to return
+                  Borrowed on {formatDate(borrowInfo?.dueDate.slice(5)!)}
                 </p>
               </div>
-              {getReturnDate(borrowInfo?.dueDate as string) < 0 && (
-                <p className="text-base font-medium text-red-800 underline underline-offset-2">
-                  You are past the refund date
-                </p>
-              )}
+              <div className="flex justify-between">
+                {isOverDue && borrowInfo?.status === "BORROWED" ? (
+                  <div className="flex gap-1">
+                    <Image
+                      src="/icons/warning.svg"
+                      alt="Calendar"
+                      width={18}
+                      height={18}
+                      className="object-contain"
+                    />
+                    <p className="text-base font-medium text-red-400">
+                      Overdue Return
+                    </p>
+                  </div>
+                ) : !isOverDue && borrowInfo?.status === "BORROWED" ? (
+                  <div className="flex gap-1">
+                    <Image
+                      src="/icons/calendar.svg"
+                      alt="Calendar"
+                      width={18}
+                      height={18}
+                      className="object-contain"
+                    />
+                    <p className="text-base font-medium text-red-400">
+                      {getReturnDate(borrowInfo?.dueDate as string)} days left
+                      to due
+                    </p>
+                  </div>
+                ) : (
+                  <div className="flex gap-1">
+                    <Image
+                      src="/icons/tick.svg"
+                      alt="Calendar"
+                      width={18}
+                      height={18}
+                      className="object-contain"
+                    />
+                    <p className="text-base dark:text-light-100">
+                      Returned on{" "}
+                      {formatDate(borrowInfo?.returnDate?.slice(5)!)}
+                    </p>
+                  </div>
+                )}
+
+                <div
+                  className="p-1 rounded-sm"
+                  style={{ backgroundColor: `${coverColor}70` }}
+                >
+                  <Image
+                    src="/icons/receipt.svg"
+                    alt="Calendar"
+                    width={18}
+                    height={18}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
             </div>
-            <Button className="book-btn">Download receipt</Button>
           </div>
         )}
       </Link>

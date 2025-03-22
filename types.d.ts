@@ -34,7 +34,12 @@ interface Book {
   summary: string;
   createdAt: Date | null;
   isLoanedBook?: boolean;
-  borrowInfo?: { borrowDate: Date; dueDate: string };
+  borrowInfo?: {
+    borrowDate: Date;
+    dueDate: string;
+    status: string;
+    returnDate: string | null;
+  };
 }
 
 interface AuthCredentials {

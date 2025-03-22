@@ -19,6 +19,8 @@ export const getBorrowedBooks = async (userId: string) => {
     borrowInfo: {
       borrowDate: elem.borrow_records.borrowDate,
       dueDate: elem.borrow_records.dueDate,
+      status: elem.borrow_records.status,
+      returnDate: elem.borrow_records.returnDate,
     },
   }));
 
