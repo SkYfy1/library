@@ -60,20 +60,12 @@ const BookCard = ({
             )}
             <div className="book-loaned">
               <div className="flex gap-1 items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-4 text-green-300"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-                  />
-                </svg>
+                <Image
+                  src="/icons/book-2.svg"
+                  alt="book-icon"
+                  width={16}
+                  height={16}
+                />
                 <p className="dark:text-light-100 text-gray-800">
                   Borrowed on {formatDate(borrowInfo?.dueDate.slice(5)!)}
                 </p>
@@ -110,7 +102,7 @@ const BookCard = ({
                   <div className="flex gap-1">
                     <Image
                       src="/icons/tick.svg"
-                      alt="Calendar"
+                      alt="tick"
                       width={18}
                       height={18}
                       className="object-contain"
@@ -128,9 +120,9 @@ const BookCard = ({
                 >
                   <Image
                     src="/icons/receipt.svg"
-                    alt="Calendar"
-                    width={18}
-                    height={18}
+                    alt="receipt"
+                    width={16}
+                    height={16}
                     className="object-contain"
                   />
                 </div>
