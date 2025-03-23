@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   DefaultValues,
   FieldValues,
@@ -27,6 +27,7 @@ import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import FileUpload from "./FileUpload";
+import Image from "next/image";
 
 interface Props<T extends FieldValues> {
   type: "SIGN_UP" | "SIGN_IN";
@@ -41,6 +42,7 @@ const AuthForm = <T extends FieldValues>({
   defaultValues,
   onSubmit,
 }: Props<T>) => {
+  const [showValue, setShowValue] = useState(false);
   const router = useRouter();
   const isSignIn = type === "SIGN_IN";
   const form: UseFormReturn<T> = useForm({
@@ -100,7 +102,36 @@ const AuthForm = <T extends FieldValues>({
                         variant="dark"
                         onFileChange={field.onChange}
                       />
+                    ) : field.name === "password" ? (
+                      // Показывать пароль надо короче
+                      <div className="relative">
+                        <Input
+                          required
+                          type={
+                            showValue
+                              ? "text"
+                              : FIELD_TYPES[
+                                  field.name as keyof typeof FIELD_TYPES
+                                ]
+                          }
+                          {...field}
+                          className="form-input"
+                        />
+                        <button
+                          type="button"
+                          className="absolute right-3 top-1/2 -translate-y-1/2"
+                          onClick={() => setShowValue((prev) => !prev)}
+                        >
+                          <Image
+                            src="/icons/admin/eye.svg"
+                            alt="eye"
+                            width={20}
+                            height={20}
+                          />
+                        </button>
+                      </div>
                     ) : (
+                      // Показывать пароль надо короче
                       <Input
                         required
                         type={
