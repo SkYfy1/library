@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import React from "react";
 import { Input } from "./ui/input";
+import Image from "next/image";
 
 const Search = () => {
   const params = useSearchParams();
@@ -22,25 +23,19 @@ const Search = () => {
   return (
     <div className="w-full relative">
       <Input
-        className="border-none bg-slate-700 brightness-70 py-6 px-8 text-white text-lg"
+        className="border-none bg-slate-700/20 brightness-70 py-6 px-8 text-white text-lg"
         placeholder="Search..."
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={params.get("query")?.toString()}
       />
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="size-4 absolute left-2 top-1/2 -translate-y-1/2 text-light-200"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-        />
-      </svg>
+      <Image
+        src="/icons/admin/search.svg"
+        width={16}
+        height={16}
+        className="absolute left-2 top-1/2 -translate-y-1/2"
+        loading="lazy"
+        alt="search"
+      />
     </div>
   );
 };

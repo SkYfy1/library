@@ -3,25 +3,29 @@
 import { config } from "@/lib/config";
 import { IKImage } from "imagekitio-next";
 import Image from "next/image";
+import Link from "next/link";
 import React, { use } from "react";
+import { Button } from "./button";
 
 interface Props {
   email: string;
   name: string;
   id: string;
   verified: boolean;
+  role: "USER" | "ADMIN" | null;
   promise: Promise<string | undefined>;
 }
 
-const ProfileCard = ({ email, name, id, verified, promise }: Props) => {
+const ProfileCard = ({ email, name, id, verified, role, promise }: Props) => {
   const userImage = use(promise);
+  const isAdmin = role === "ADMIN";
 
   return (
     <article className="user-card">
       <div className="card-bookmark"></div>
       <div className="flex flex-col mt-16 gap-10">
         <section className="flex gap-6 items-center">
-          <div className="size-36 border-8 border-solid border-gray-600 rounded-full">
+          <div className="md:size-36 border-8 border-solid border-gray-600 rounded-full">
             <IKImage
               path={userImage}
               alt="Book cover"
@@ -52,10 +56,24 @@ const ProfileCard = ({ email, name, id, verified, promise }: Props) => {
                   className="object-contain"
                 />
               )}
-              <p className="text-xs">{verified && "Not"} Verified Student</p>
+              <p className="text-xs">{!verified && "Not"} Verified Student</p>
             </div>
             <h2 className="font-semibold text-2xl">{name}</h2>
             <p>{email}</p>
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="dark:text-primary text-primary-admin flex gap-1 flex-reverse"
+              >
+                <Image
+                  src="/icons/admin/eye.svg"
+                  width={15}
+                  height={15}
+                  alt="eye"
+                />
+                To admin panel
+              </Link>
+            )}
           </div>
         </section>
         <section className="flex flex-col gap-1">

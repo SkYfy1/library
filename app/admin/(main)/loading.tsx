@@ -3,6 +3,7 @@ import SkeletonMiniAcc from "@/components/admin/table/skeletons/SkeletonMiniAcc"
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import Image from "next/image";
 
 const Loading = () => {
   return (
@@ -74,21 +75,8 @@ const Loading = () => {
             </Button>
           </div>
 
-          <div className="w-full bg-light-100 justify-start p-4 flex items-center gap-2 rounded-md font-semibold">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-8 bg-white rounded-full p-1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
-              />
-            </svg>
+          <div className="w-full bg-light-300 justify-start p-4 flex items-center gap-2 rounded-md font-semibold">
+            <div className="bg-white size-8 rounded-full p-1" />
             Add New Book
           </div>
           {Array(6)

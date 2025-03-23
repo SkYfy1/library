@@ -126,7 +126,7 @@
 
   /* Book Overview */
   .book-overview {
-    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 bg-light-700 dark:bg-transparent p-6 dark:p-0 rounded-2xl;
+    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 bg-light-700 dark:bg-transparent p-4 dark:p-4 rounded-2xl;
   }
 
   .book-overview h1 {

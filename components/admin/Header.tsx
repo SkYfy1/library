@@ -1,6 +1,7 @@
 import { Session } from "next-auth";
 import React from "react";
 import { Input } from "../ui/input";
+import Image from "next/image";
 
 const Header = ({ session }: { session: Session }) => {
   return (
@@ -14,20 +15,14 @@ const Header = ({ session }: { session: Session }) => {
         </p>
       </div>
       <div className="relative w-1/3">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6 absolute top-3 left-1.5 text-gray-500"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-          />
-        </svg>
+        <Image
+          src="/icons/admin/search.svg"
+          width={16}
+          height={16}
+          className="absolute top-4 left-3"
+          loading="lazy"
+          alt="search"
+        />
         <Input
           className="white w-full py-6 px-8"
           placeholder="Search users, books by title, author or genre"

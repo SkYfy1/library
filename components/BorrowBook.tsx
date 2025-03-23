@@ -62,12 +62,7 @@ const BorrowBook = ({
       onClick={handleBorrow}
       disabled={borrowing}
     >
-      <Image
-        src={resolvedTheme === "dark" ? "/icons/book.svg" : "/icons/logo.svg"}
-        width={20}
-        height={20}
-        alt="book"
-      />
+      <Image src="/icons/book.svg" width={20} height={20} alt="book" />
       <p className="font-bebas-neue text-xl dark:text-dark-100 text-white">
         {borrowing ? "Borrowing..." : "Borrow book"}
       </p>

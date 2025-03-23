@@ -12,6 +12,7 @@ import { deleteBook, updateBookStatus } from "@/lib/admin/actions/book";
 import VerifyUser from "./VerifyUser";
 import Link from "next/link";
 import Delete from "./Delete";
+import Image from "next/image";
 
 interface Props {
   type: "Books" | "Borrow" | "Users" | "Account Request";
@@ -46,20 +47,13 @@ const TableList = ({ type, data }: Props) => {
         </td>
         <td className="p-6 text-sm w-full tracking-wide flex gap-3">
           <Link href={`/admin/books/edit/${data.id}`}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-8 text-blue-100 cursor-pointer"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-              />
-            </svg>
+            <Image
+              src="/icons/admin/edit.svg"
+              width={32}
+              height={32}
+              loading="lazy"
+              alt="edit"
+            />
           </Link>
           <Delete
             text={{
@@ -106,20 +100,13 @@ const TableList = ({ type, data }: Props) => {
         <td className="p-6 text-sm tracking-wide font-semibold text-left">
           <a className="text-blue-500 flex gap-1 items-center">
             <p>View ID Card</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-              />
-            </svg>
+            <Image
+              src="/icons/admin/link.svg"
+              width={15}
+              height={15}
+              loading="lazy"
+              alt="trash"
+            />
           </a>
         </td>
         <td className="p-6 text-sm   tracking-wide text-left">
@@ -157,21 +144,13 @@ const TableList = ({ type, data }: Props) => {
         </td>
         <td className="p-6 text-sm tracking-wide font-semibold text-left">
           <a className="text-blue-500 flex gap-1 items-center cursor-pointer">
+            <Image
+              src="/icons/admin/eye.svg"
+              width={16}
+              height={16}
+              alt="eye"
+            />
             <p>View ID Card</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-              />
-            </svg>
           </a>
         </td>
         <td className="p-6 text-sm tracking-wide text-left flex gap-8 items-center">
@@ -221,21 +200,14 @@ const TableList = ({ type, data }: Props) => {
           {data.returnDate ?? "Not returned"}
         </td>
         <td className="p-6 text-sm w-full tracking-wide flex gap-3">
-          <Button className="text-blue-700 bg-blue-200/60">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
-              />
-            </svg>
+          <Button className="text-[#25388C] bg-purple-100/30 shadow-none">
+            <Image
+              src="/icons/admin/receipt.svg"
+              width={16}
+              height={16}
+              loading="lazy"
+              alt="edit"
+            />
             Generate
           </Button>
         </td>

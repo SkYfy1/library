@@ -1,10 +1,12 @@
 import { auth } from "@/auth";
 import BookList from "@/components/BookList";
 import ProfileCardSkeleton from "@/components/skeletons/ProfileCardSkeleton";
-import Theme from "@/components/Theme";
 import ProfileCard from "@/components/ui/ProfileCard";
+import { db } from "@/db/drizzle";
+import { users } from "@/db/schema";
 import { getBorrowedBooks } from "@/lib/data/book";
 import { getUserImage } from "@/lib/data/user";
+import { eq } from "drizzle-orm";
 
 import React, { Suspense } from "react";
 
@@ -12,6 +14,11 @@ const Page = async () => {
   const session = await auth();
   const borrowData = await getBorrowedBooks(session?.user?.id!);
   const promise = getUserImage(session?.user?.id);
+  const role = await db
+    .select({ isAdmin: users.role })
+    .from(users)
+    .where(eq(users.id, session?.user.id!))
+    .limit(1);
 
   const verified = session?.user.verified;
 
@@ -26,14 +33,9 @@ const Page = async () => {
             id={session?.user?.id!}
             promise={promise}
             verified={verified!}
+            role={role[0].isAdmin}
           />
         </Suspense>
-        <div className="mt-10 items-center flex flex-col gap-2">
-          <h1 className="dark:text-white text-gray-700 font-bold text-2xl">
-            Change theme
-          </h1>
-          <Theme />
-        </div>
       </div>
       <BookList
         title="Borrowed Books"

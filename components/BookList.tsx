@@ -15,9 +15,9 @@ const BookList = ({ title, text = null, books, containerClassName }: Props) => {
   return (
     <section
       className={cn(
-        "bg-light-700 dark:bg-transparent p-4 rounded-2xl dark:p-0",
+        "bg-light-700 dark:bg-transparent p-4 rounded-2xl dark:p-4",
         containerClassName,
-        title === "Borrowed Books" && "dark:p-8"
+        title === "Borrowed Books" && "dark:p-4"
       )}
     >
       <h2 className="font-bebas-neue text-4xl dark:text-light-100 text-gray-800">

@@ -31,7 +31,7 @@ const BookCard = ({
       >
         {isLoanedBook ? (
           <div
-            className={`w-full h-full p-4 rounded-sm`}
+            className={`h-full p-4 rounded-sm`}
             style={{ backgroundColor: `${coverColor}70` }}
           >
             <BookCover coverColor={coverColor} coverUrl={coverUrl} />

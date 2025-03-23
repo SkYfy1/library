@@ -5,6 +5,7 @@ import {
   getBooks,
   getBorrowedBooks,
 } from "@/lib/admin/data";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -45,7 +46,7 @@ const Page = async () => {
               Recently borrowed books
             </h1>
             <Link href="/admin/borrow-records">
-              <Button className="bg-gray-50 text-purple-700 font-semibold">
+              <Button className="bg-gray-50 text-purple-700 font-semibold hover:bg-purple-700 hover:text-white duration-350">
                 View All
               </Button>
             </Link>
@@ -59,7 +60,7 @@ const Page = async () => {
               Account Requests
             </h1>
             <Link href="/admin/account-requests">
-              <Button className="bg-gray-50 text-purple-700 font-semibold">
+              <Button className="bg-gray-50 text-purple-700 font-semibold hover:bg-purple-700 hover:text-white duration-350">
                 View All
               </Button>
             </Link>
@@ -96,7 +97,7 @@ const Page = async () => {
               Recently added books
             </h1>
             <Link href="/admin/books">
-              <Button className="bg-gray-50 text-purple-700 font-semibold">
+              <Button className="bg-gray-50 text-purple-700 font-semibold hover:bg-purple-700 hover:text-white duration-350">
                 View All
               </Button>
             </Link>
@@ -106,20 +107,14 @@ const Page = async () => {
             href="/admin/books/new"
             className="w-full bg-light-300 justify-start p-4 flex items-center gap-2 rounded-md font-semibold dark:text-gray-800"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-8 bg-white rounded-full p-1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
-              />
-            </svg>
+            <Image
+              src="/icons/admin/plus.svg"
+              width={32}
+              height={32}
+              className="bg-white rounded-full p-1.5"
+              loading="lazy"
+              alt="plus"
+            />
             Add New Book
           </Link>
           {/* <BookTable type="mini" /> */}

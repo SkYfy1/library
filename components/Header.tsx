@@ -9,6 +9,7 @@ import { Session } from "next-auth";
 import { Button } from "./ui/button";
 import { signOutUser } from "@/lib/actions/auth";
 import { usePathname } from "next/navigation";
+import Theme from "./Theme";
 
 const Header = ({ session }: { session: Session }) => {
   const pathname = usePathname();
@@ -18,7 +19,7 @@ const Header = ({ session }: { session: Session }) => {
       <Link href="/" className="flex gap-4 items-center">
         <Image src="/icons/logo.svg" width={40} height={40} alt="logo-image" />
 
-        <p className="dark:text-white  text-gray-700 font-ibm-plex-sans font-semibold">
+        <p className="dark:text-white hidden md:block text-gray-700 font-ibm-plex-sans font-semibold">
           BookWise
         </p>
       </Link>
@@ -44,6 +45,9 @@ const Header = ({ session }: { session: Session }) => {
           <Link href="/search">Search</Link>
         </li>
         <li>
+          <Theme />
+        </li>
+        <li>
           <Link href="/my-profile">
             <Avatar>
               <AvatarFallback className=" bg-amber-100 dark:text-black text-black">
@@ -54,7 +58,7 @@ const Header = ({ session }: { session: Session }) => {
         </li>
         <li>
           <form action={signOutUser}>
-            <Button className="bg-transparent text-red-800 hover:bg-transparent">
+            <Button className="bg-transparent text-red-800 hover:bg-transparent shadow-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
