@@ -14,7 +14,7 @@ const Header = ({ session }: { session: Session }) => {
           Monitor all of your users and books here
         </p>
       </div>
-      <div className="relative w-1/3">
+      <div className="relative md:w-1/3 w-full">
         <Image
           src="/icons/admin/search.svg"
           width={16}

@@ -18,7 +18,7 @@ const Page = async () => {
 
   return (
     <main>
-      <section className="flex gap-4 w-full">
+      <section className="flex md:flex-row flex-col gap-4 w-full">
         <div className="p-4 bg-white w-full rounded-md">
           <h3 className="mb-4 text-gray-600 font-semibold">Borrowed books</h3>
           <h1 className="font-bold text-2xl dark:text-black">
@@ -38,7 +38,7 @@ const Page = async () => {
           </h1>
         </div>
       </section>
-      <section className="grid grid-cols-6 grid-rows-2 gap-2 mt-4 h-[75vh]">
+      <section className="md:grid flex flex-col grid-cols-6 grid-rows-2 gap-2 mt-4 md:h-[75vh]">
         {/*  */}
         <div className="col-span-3 row-span-1 rounded-md p-4 overflow-hidden bg-white after-gradient">
           <div className="flex justify-between mb-4">

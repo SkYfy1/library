@@ -11,7 +11,7 @@ const MiniBorrowedBook = ({ book }: { book: AdminBorrowedBooks }) => {
     >
       <div className="flex items-center gap-3 text-sm">
         <BookCover
-          className="h-16 w-12"
+          className="md:h-16 md:w-12 h-12 w-8"
           coverColor={book.bookData.coverColor}
           coverUrl={book.bookData.coverUrl}
         />
