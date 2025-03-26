@@ -28,16 +28,18 @@ export const Table = async ({
         )}
       >
         {data.map((el, ind) => {
-          if (type === "Books")
-            return <MiniBook key={ind} book={el as AdminBooks} />;
-          if (type === "Users")
-            return <MiniUser key={ind} user={el as AdminUsers} />;
-          if (type === "Borrow")
-            return (
-              <MiniBorrowedBook key={ind} book={el as AdminBorrowedBooks} />
-            );
-          if (type === "Account Request")
-            return <MiniAcc key={ind} account={el as AdminUsers} />;
+          switch (type) {
+            case "Books":
+              return <MiniBook key={ind} book={el as AdminBooks} />;
+            case "Borrow":
+              return (
+                <MiniBorrowedBook key={ind} book={el as AdminBorrowedBooks} />
+              );
+            case "Users":
+              return <MiniUser key={ind} user={el as AdminUsers} />;
+            case "Account Request":
+              return <MiniAcc key={ind} account={el as AdminUsers} />;
+          }
         })}
       </div>
     );
@@ -75,16 +77,18 @@ export const Table = async ({
         )}
       >
         {data.map((el, ind) => {
-          if (type === "Books")
-            return <MiniBook key={ind} book={el as AdminBooks} />;
-          if (type === "Users")
-            return <MiniUser key={ind} user={el as AdminUsers} />;
-          if (type === "Borrow")
-            return (
-              <MiniBorrowedBook key={ind} book={el as AdminBorrowedBooks} />
-            );
-          if (type === "Account Request")
-            return <MiniAcc key={ind} account={el as AdminUsers} />;
+          switch (type) {
+            case "Books":
+              return <MiniBook key={ind} book={el as AdminBooks} />;
+            case "Borrow":
+              return (
+                <MiniBorrowedBook key={ind} book={el as AdminBorrowedBooks} />
+              );
+            case "Users":
+              return <MiniUser key={ind} user={el as AdminUsers} />;
+            case "Account Request":
+              return <MiniAcc key={ind} account={el as AdminUsers} />;
+          }
         })}
       </div>
     </>

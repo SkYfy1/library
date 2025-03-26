@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { use } from "react";
 import { Button } from "./button";
+import { toast } from "sonner";
 
 interface Props {
   email: string;
@@ -59,7 +60,27 @@ const ProfileCard = ({ email, name, id, verified, role, promise }: Props) => {
               <p className="text-xs">{!verified && "Not"} Verified Student</p>
             </div>
             <h2 className="font-semibold text-2xl">{name}</h2>
-            <p>{email}</p>
+            <div className="flex items-center gap-2">
+              <p>{email}</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-4 hover:text-gray-400 duration-200 cursor-pointer"
+                onClick={async () => {
+                  await navigator.clipboard.writeText(email);
+                  toast("Text copied!", { description: email });
+                }}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"
+                />
+              </svg>
+            </div>
             {isAdmin && (
               <Link
                 href="/admin"

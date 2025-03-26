@@ -117,7 +117,6 @@ const Page = async () => {
             />
             Add New Book
           </Link>
-          {/* <BookTable type="mini" /> */}
           <Table type="Books" size="small" data={booksList} />
         </div>
       </section>
