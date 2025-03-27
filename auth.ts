@@ -29,11 +29,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         if (!isPasswordValid) return null;
 
+        const isVerified = user[0].status === "APPROVED";
+
         return {
           id: user[0].id.toString(),
           email: user[0].email.toString(),
           name: user[0].fullName.toString(),
-          verified: true,
+          verified: isVerified,
         } as User;
       },
     }),
