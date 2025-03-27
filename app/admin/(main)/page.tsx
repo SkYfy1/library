@@ -9,9 +9,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Page = async () => {
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string }>;
+}) => {
+  const search = await searchParams;
+  const query = search?.query || "";
   const [booksList, borrowedBooks, accounts] = await Promise.all([
-    getBooks(),
+    getBooks(query),
     getBorrowedBooks(),
     getAccountRequests(),
   ]);

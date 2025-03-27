@@ -6,7 +6,7 @@ import React from "react";
 import { Input } from "./ui/input";
 import Image from "next/image";
 
-const Search = () => {
+const Search = ({ title = "Search..." }: { title?: string }) => {
   const params = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -23,8 +23,8 @@ const Search = () => {
   return (
     <div className="w-full relative">
       <Input
-        className="border-none bg-slate-700/20 brightness-70 py-6 px-8 text-white text-lg"
-        placeholder="Search..."
+        className="border-none bg-slate-500/20 brightness-70 py-6 px-8 text-white text-lg"
+        placeholder={title}
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={params.get("query")?.toString()}
       />

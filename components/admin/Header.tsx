@@ -2,6 +2,7 @@ import { Session } from "next-auth";
 import React from "react";
 import { Input } from "../ui/input";
 import Image from "next/image";
+import Search from "../Search";
 
 const Header = ({ session }: { session: Session }) => {
   return (
@@ -14,8 +15,8 @@ const Header = ({ session }: { session: Session }) => {
           Monitor all of your users and books here
         </p>
       </div>
-      <div className="relative md:w-1/3 w-full">
-        <Image
+      <div className="relative lg:w-1/3 w-full">
+        {/* <Image
           src="/icons/admin/search.svg"
           width={16}
           height={16}
@@ -26,7 +27,8 @@ const Header = ({ session }: { session: Session }) => {
         <Input
           className="white w-full py-6 px-8"
           placeholder="Search users, books by title, author or genre"
-        />
+        /> */}
+        <Search title="Search users, books by title, author or genre..." />
       </div>
     </header>
   );
