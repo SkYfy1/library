@@ -19,7 +19,7 @@ const Page = async ({
   const [booksList, borrowedBooks, accounts] = await Promise.all([
     getBooks(query),
     getBorrowedBooks(),
-    getAccountRequests(),
+    getAccountRequests(query),
   ]);
 
   return (

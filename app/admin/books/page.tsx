@@ -1,14 +1,19 @@
 import { Table } from "@/components/admin/table/Table";
 import { Button } from "@/components/ui/button";
-import { db } from "@/db/drizzle";
-import { books } from "@/db/schema";
+import { getBooks } from "@/lib/admin/data";
 import Link from "next/link";
 import React from "react";
 
 const headers = ["title", "Author", "genre", "Date Created", "Action"];
 
-const Page = async () => {
-  const booksList = await db.select().from(books);
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string }>;
+}) => {
+  const search = await searchParams;
+  const query = search?.query || "";
+  const booksList = await getBooks(query);
   return (
     <section className="w-full rounded-2xl bg-white p-7">
       <div className="flex flex-wrap items-center justify-between gap-2">

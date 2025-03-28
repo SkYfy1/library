@@ -10,6 +10,7 @@ const Search = ({ title = "Search..." }: { title?: string }) => {
   const params = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+
   const handleSearch = useDebouncedCallback((term: string) => {
     const searchParams = new URLSearchParams(params);
     if (term) {
@@ -20,6 +21,7 @@ const Search = ({ title = "Search..." }: { title?: string }) => {
 
     replace(`${pathname}?${searchParams.toString()}`);
   }, 500);
+
   return (
     <div className="w-full relative">
       <Input

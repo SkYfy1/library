@@ -1,6 +1,6 @@
 import { db } from "@/db/drizzle";
 import { books, borrowRecords, users } from "@/db/schema";
-import { eq, ilike, or } from "drizzle-orm";
+import { and, eq, ilike, or } from "drizzle-orm";
 
 export const getUsers = async () => {
   const userList = await db.select().from(users);
@@ -8,11 +8,13 @@ export const getUsers = async () => {
   return userList;
 };
 
-export const getAccountRequests = async () => {
+export const getAccountRequests = async (filter: string) => {
   const accounts = await db
     .select()
     .from(users)
-    .where(eq(users.status, "PENDING"));
+    .where(
+      and(eq(users.status, "PENDING"), ilike(users.fullName, `%${filter}%`))
+    );
 
   return accounts;
 };

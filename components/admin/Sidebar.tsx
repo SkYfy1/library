@@ -3,13 +3,14 @@ import { adminSideBarLinks } from "@/constants";
 import { cn, getInitials } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import React, { useRef } from "react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Session } from "next-auth";
 
 const Sidebar = ({ session }: { session: Session }) => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   return (
     <div className="admin-sidebar">
@@ -31,7 +32,7 @@ const Sidebar = ({ session }: { session: Session }) => {
                 link.route !== "/admin") ||
               link.route === pathname;
             return (
-              <Link href={link.route} key={link.route}>
+              <Link href={link.route + `?${searchParams}`} key={link.route}>
                 <div
                   className={cn(
                     "link",

@@ -10,8 +10,14 @@ const headers = [
   "Actions",
 ];
 
-const Page = async () => {
-  const accounts = await getAccountRequests();
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string }>;
+}) => {
+  const search = await searchParams;
+  const query = search?.query || "";
+  const accounts = await getAccountRequests(query);
   return (
     <section className="admin-table-container">
       <h1 className="text-2xl mb-6 font-semibold">
