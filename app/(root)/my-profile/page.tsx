@@ -15,12 +15,14 @@ const Page = async () => {
   const borrowData = await getBorrowedBooks(session?.user?.id!);
   const promise = getUserImage(session?.user?.id);
   const role = await db
-    .select({ isAdmin: users.role })
+    .select({ isAdmin: users.role, status: users.status })
     .from(users)
     .where(eq(users.id, session?.user.id!))
     .limit(1);
 
-  const verified = session?.user.verified;
+  const verified = role[0].status === "APPROVED";
+
+  // const verified = session?.user.verified;
 
   return (
     <div className="flex justify-between flex-col md:flex-row gap-12">
