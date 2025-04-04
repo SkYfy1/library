@@ -33,15 +33,15 @@ Built with Next.js, TypeScript, and Postgres, Library Management System platform
 
 👉 **All Users Page**: View and manage users, including approving or revoking access.  
 
-👉 **Account Requests Page**: Admin approval for account requests, with email notifications for user verification.  
+👉 **Account Requests Page**: Admin approval for account requests.  
 
-👉 **All Books Page**: List and manage all library books with advanced search, pagination, and filters. 
+👉 **All Books Page**: List and manage all library books. 
 
 👉 **Book Management Forms**: Add new books and edit existing entries.  
 
 👉 **Book Details Page**: Detailed book information for administrators.  
 
-👉 **Borrow Records Page**: Complete borrow history with pagination and search.  
+👉 **Borrow Records Page**: Complete borrow history with search.  
 
 👉 **Role Management**: Change user roles to invite more admins. 
 
@@ -51,7 +51,7 @@ Built with Next.js, TypeScript, and Postgres, Library Management System platform
 
 👉 **Database ORM**: Drizzle ORM for simplified and efficient database interactions.  
 
-👉 **UI/UX**: Built with TailwindCSS, ShadCN, and other cutting-edge tools.  
+👉 **UI/UX**: Built with TailwindCSS, ShadCN.  
 
 👉 **Email Handling**: Resend for automated email communications.  
 
