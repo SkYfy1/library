@@ -55,7 +55,7 @@ Built with Next.js, TypeScript, and Postgres, Library Management System platform
 
 👉 **Email Handling**: Resend for automated email communications.  
 
-## <h1>Screenshots</h1>
+<h1>Screenshots</h1>
 
 ## <h1 align="center">Main Page</h1>
 ![library-lime-one vercel app_(fhd)](https://github.com/user-attachments/assets/05b03997-95af-49ad-a253-a06a17e14e09)
@@ -74,6 +74,9 @@ Built with Next.js, TypeScript, and Postgres, Library Management System platform
 
 ## <h1 align="center">SIGN UP</h1>
 ![library-lime-one vercel app_(fhd) (4)](https://github.com/user-attachments/assets/a48db49a-f29f-4e8d-8fee-5b7c00529749)
+
+## <h1 align="center">Profile Page</h1>
+![localhost_3000_my-profile(fhd)](https://github.com/user-attachments/assets/0fd6e8b2-c7a4-4e9a-aad1-6039692b8ba6)
 
 ## <h1 align="center">Mobile UI</h1>
 ![library-lime-one vercel app_(Pixel 7) (4)](https://github.com/user-attachments/assets/f7ab6cf6-391f-498e-a1c6-22f6bae28daa)
